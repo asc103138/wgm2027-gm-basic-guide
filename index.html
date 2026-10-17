@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2027 機關王 GM 基礎組滿分攻略｜8 關科學原理 × 彈力車實戰手冊</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css" />
+  <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+  <style>
+    :root {
+      --accent:  #e8643a;
+      --accent2: #4fc3f7;
+      --success: #81c784;
+      --warn:    #ffb74d;
+      --bg-dark: #0d1117;
+      --card-bg: rgba(255, 255, 255, 0.06);
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+    }
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Segoe UI', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+    .reveal h1 { font-size: 1.95em; line-height: 1.2; }
+    .reveal h2 { font-size: 1.25em; color: var(--accent2); margin-bottom: 0.45em; }
+    .reveal h3 { font-size: 0.85em; color: var(--warn); margin-bottom: 0.3em; }
+    .reveal .progress { color: var(--accent); height: 5px; }
+    .reveal .fragment { opacity: 0.25; transition: opacity 0.3s ease; }
+    .reveal .fragment.visible { opacity: 1; }
+
+    /* === 封面 === */
+    .title-slide { text-align: center; padding: 10px 20px; }
+    .title-slide .tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), #ff8a50);
+      color: #fff;
+      padding: 6px 18px;
+      border-radius: 24px;
+      font-size: 0.48em;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8em;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(232, 100, 58, 0.4);
+    }
+    .title-slide .subtitle { font-size: 0.62em; color: #cbd5e1; margin-top: 0.6em; line-height: 1.6; }
+    .title-slide .author   { margin-top: 1.4em; font-size: 0.44em; color: #94a3b8; }
+
+    /* === 徽章與小標籤 === */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.72em;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .badge-orange { background: rgba(232,100,58,0.22); color: #ff8a65; border: 1px solid rgba(232,100,58,0.5); }
+    .badge-cyan   { background: rgba(79,195,247,0.2); color: var(--accent2); border: 1px solid rgba(79,195,247,0.45); }
+    .badge-green  { background: rgba(129,199,132,0.2); color: var(--success); border: 1px solid rgba(129,199,132,0.45); }
+    .badge-warn   { background: rgba(255,183,77,0.2); color: var(--warn); border: 1px solid rgba(255,183,77,0.45); }
+
+    /* === 統計數字卡 === */
+    .stat-row { display: flex; gap: 14px; justify-content: center; margin-top: 0.5em; }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-align: center;
+      flex: 1;
+    }
+    .stat-card .num   { font-size: 1.45em; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .stat-card .label { font-size: 0.38em; color: #e2e8f0; margin-top: 6px; line-height: 1.4; }
+
+    /* === 優勢卡（含圖標）=== */
+    .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0.4em; }
+    .adv-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 0.4em; }
+    .adv-card {
+      background: rgba(255,255,255,0.05);
+      border-top: 4px solid var(--accent2);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .adv-card .adv-icon { margin-bottom: 6px; }
+    .adv-card .adv-icon img {
+      width: 54px; height: 54px; object-fit: contain;
+      display: block; margin: 0 auto;
+      filter: drop-shadow(0 0 10px rgba(79,195,247,0.6));
+    }
+    .adv-card .adv-title { font-size: 0.46em; font-weight: 700; color: var(--accent2); margin-bottom: 6px; }
+    .adv-card .adv-desc  { font-size: 0.36em; color: #cbd5e1; line-height: 1.55; text-align: left; }
+
+    /* === 實戰教學雙欄/三欄卡 === */
+    .stage-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 0.3em; text-align: left; }
+    .stage-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 0.3em; text-align: left; }
+    .stage-card {
+      background: rgba(17, 24, 39, 0.82);
+      border: 1px solid rgba(79,195,247,0.28);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stage-card.task-highlight {
+      border: 2px solid var(--warn);
+      box-shadow: 0 0 18px rgba(255, 183, 77, 0.18);
+    }
+    .stage-card h3 { font-size: 0.52em; margin: 0 0 6px 0; color: var(--accent2); display: flex; align-items: center; justify-content: space-between; }
+    .stage-card ul { font-size: 0.37em; color: #e2e8f0; margin: 0; padding-left: 1.2em; line-height: 1.6; }
+    .stage-card ul li { margin-bottom: 4px; }
+    .stage-card .ref-img {
+      width: 100%;
+      height: 135px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* === 10片大底盤 2x5 地圖 === */
+    .board-map {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      background: rgba(255,255,255,0.04);
+      padding: 12px;
+      border-radius: 14px;
+      border: 2px solid rgba(79,195,247,0.35);
+      margin-top: 0.3em;
+    }
+    .board-cell {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      padding: 8px 10px;
+      text-align: left;
+      position: relative;
+      min-height: 92px;
+    }
+    .board-cell.overpass {
+      border: 2px dashed var(--warn);
+      background: linear-gradient(180deg, rgba(255,183,77,0.12), rgba(79,195,247,0.08));
+    }
+    .board-cell.target-zone {
+      border: 2px solid #ef4444;
+      background: rgba(239, 68, 68, 0.14);
+    }
+    .board-cell.prep-zone {
+      border: 2px solid var(--success);
+      background: rgba(129, 199, 132, 0.14);
+    }
+    .board-cell .zone-id {
+      font-size: 0.48em;
+      font-weight: 900;
+      color: var(--accent2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .board-cell .stage-tag {
+      font-size: 0.34em;
+      background: var(--accent);
+      color: #fff;
+      padding: 1px 6px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .board-cell .cell-title {
+      font-size: 0.4em;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+    }
+    .board-cell .cell-desc {
+      font-size: 0.31em;
+      color: #cbd5e1;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    /* === 表格樣式 === */
+    .clean-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.35em;
+      margin-top: 0.3em;
+    }
+    .clean-table th {
+      background: rgba(79, 195, 247, 0.2);
+      color: var(--accent2);
+      padding: 7px 10px;
+      text-align: left;
+      border-bottom: 2px solid rgba(79, 195, 247, 0.4);
+    }
+    .clean-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #e2e8f0;
+    }
+    .clean-table tr:nth-child(even) td {
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* === 結論與口訣盒 === */
+    .tip-box {
+      background: rgba(232, 100, 58, 0.12);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 0.4em;
+      font-size: 0.38em;
+      color: #f8fafc;
+      text-align: left;
+      line-height: 1.55;
+    }
+
+    .conclusion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 0.5em; text-align: left; }
+    .conclusion-card { border-radius: 10px; padding: 14px 16px; font-size: 0.38em; }
+    .conclusion-card.positive {
+      background: rgba(79,195,247,0.12);
+      border: 1px solid rgba(79,195,247,0.35);
+    }
+    .conclusion-card.caution {
+      background: rgba(255,183,77,0.1);
+      border: 1px solid rgba(255,183,77,0.3);
+    }
+    .conclusion-card .cc-title { font-size: 1.2em; font-weight: 700; margin-bottom: 6px; }
+    .conclusion-card.positive .cc-title { color: var(--accent2); }
+    .conclusion-card.caution  .cc-title { color: var(--warn); }
+    .conclusion-card ul { list-style: none; padding: 0; margin: 0; color: #e2e8f0; line-height: 1.65; }
+    .conclusion-card ul li::before { content: "✔ "; color: var(--success); font-weight: bold; }
+
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ==================== SLIDE 1: 封面 [BG] ==================== -->
+    <section data-background-image="images/cover.png"
+             data-background-opacity="0.35"
+             data-background-size="cover">
+      <div class="title-slide">
+        <div class="tag">2027 WORLD GREENMECH · 國小組集訓實戰手冊</div>
+        <h1>2027 機關王 GM 基礎組<br><span style="color:var(--accent2);">8 關科學原理 × 彈力車滿分攻略</span></h1>
+        <h3 style="color:var(--warn); margin-top:0.3em;">整合揚揚老師 23 部《機關王小技巧》× 官方最新競賽規則</h3>
+        <p class="subtitle">
+          8 種不重複科學概念零失誤串聯 ｜ 垂直上升 30cm ＆ 凌空飛越 30cm 穩定解方<br>
+          40T 藍色定位齒輪彈力車 18分 × 3次 = 54分全拿秘笈
+        </p>
+        <p class="author">臺中市梧棲區中正國小 STEAM 教師社群 · 選手培訓專用教材</p>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 2: 破冰文字雲 [INTERACT:wordcloud] ==================== -->
+    <section id="slide-wordcloud">
+      <h2 style="font-size:1.1em; margin-bottom:0.3em;">💬 選手破冰：看到「8關＋彈力車」，你最想挑戰或最擔心哪個機關？</h2>
+      <div style="display:grid; grid-template-columns:270px 1fr; gap:14px; height:450px;">
+        <!-- 左欄：輸入 + 快速標籤 + 排行 -->
+        <div style="display:flex; flex-direction:column; gap:8px; text-align:left;">
+          <div id="wc-input-card" style="background:rgba(255,255,255,0.06); border-radius:10px; padding:12px; cursor:text;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:0.36em; color:var(--accent2); font-weight:700;">輸入或點擊下方詞彙</span>
+              <span style="font-size:0.28em; color:#94a3b8;">Enter 送出</span>
+            </div>
+            <div style="position:relative; width:100%;">
+              <input id="wc-input" type="text" placeholder="例：凌空飛越30cm、彈力車煞車…" maxlength="20" autocomplete="off"
+                style="width:100%; padding:8px 28px 8px 10px; border-radius:8px; border:1px solid rgba(79,195,247,0.35);
+                       background:rgba(255,255,255,0.08); color:#fff; font-size:14px;
+                       box-sizing:border-box; font-family:inherit; outline:none;" />
+              <button id="wc-clear-input" style="position:absolute; right:6px; top:50%; transform:translateY(-50%);
+                      background:transparent; border:none; color:#94a3b8; font-size:13px; cursor:pointer; display:none;">✕</button>
+            </div>
+            <!-- 快捷點擊詞彙（方便平板學生秒點） -->
+            <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:6px;">
+              <button class="wc-quick" data-word="彈力車停在+3分區" style="font-size:11px; padding:3px 7px; border-radius:6px; background:rgba(79,195,247,0.16); color:#fff; border:1px solid rgba(79,195,247,0.3); cursor:pointer;">🚗 彈力車停+3分</button>
+              <button class="wc-quick" data-word="凌空飛越30cm" style="font-size:11px; padding:3px 7px; border-radius:6px; background:rgba(232,100,58,0.2); color:#fff; border:1px solid rgba(232,100,58,0.4); cursor:pointer;">🚀 凌空飛越30cm</button>
+              <button class="wc-quick" data-word="垂直上升30cm" style="font-size:11px; padding:3px 7px; border-radius:6px; background:rgba(255,183,77,0.2); color:#fff; border:1px solid rgba(255,183,77,0.4); cursor:pointer;">🛗 垂直上升30cm</button>
+              <button class="wc-quick" data-word="向心力圓周旋轉" style="font-size:11px; padding:3px 7px; border-radius:6px; background:rgba(129,199,132,0.2); color:#fff; border:1px solid rgba(129,199,132,0.4); cursor:pointer;">🌀 向心力旋轉</button>
+            </div>
+            <div style="display:flex; gap:6px; margin-top:8px;">
+              <button id="wc-btn"
+                style="flex:1; padding:8px; background:var(--accent2); color:#0d1117;
+                       border:none; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;">
+                送出 ↵
+              </button>
+              <button id="wc-reset-btn"
+                style="padding:7px 10px; background:rgba(255,255,255,0.08); color:#94a3b8;
+                       border:1px solid rgba(255,255,255,0.18); border-radius:8px; font-weight:600; font-size:12px; cursor:pointer;">
+                🔄 重置
+              </button>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06); border-radius:10px; padding:12px; flex:1; overflow:hidden; display:flex; flex-direction:column;">
+            <div style="font-size:0.36em; color:var(--accent2); font-weight:700; margin-bottom:6px;">
+              小隊熱門關注排行
+              <span style="display:inline-block; background:#ff4757; color:#fff; padding:2px 7px;
+                           border-radius:10px; font-size:0.85em; animation:pulse 1.5s infinite;">LIVE</span>
+            </div>
+            <div id="wc-list" style="font-size:0.33em; overflow-y:auto; flex:1; color:#ccc;"></div>
+            <div style="margin-top:6px; font-size:0.3em; color:#94a3b8; border-top:1px solid rgba(255,255,255,0.08); padding-top:5px; display:flex; justify-content:space-between; align-items:center;">
+              <div>總提交：<span id="wc-total" style="color:var(--accent); font-weight:700;">0</span>　詞數：<span id="wc-unique" style="color:var(--accent2); font-weight:700;">0</span></div>
+              <button id="wc-reset-list-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#94a3b8; border-radius:4px; font-size:11px; padding:2px 6px; cursor:pointer;">清空 ↺</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右欄：文字雲 -->
+        <div style="background:rgba(255,255,255,0.04); border-radius:12px; overflow:hidden;
+                    position:relative; border:1px solid rgba(255,255,255,0.08);">
+          <canvas id="wc-canvas" style="width:100%; height:100%; display:block;"></canvas>
+          <div id="wc-empty" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+                                     color:#64748b; font-size:0.42em; text-align:center;
+                                     pointer-events:none; line-height:2;">
+            點擊左側快捷詞或輸入想法<br>即時文字雲就會出現 ✨
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 3: 100分配分結構與紅線 [ICON] ==================== -->
+    <section>
+      <h2>📊 2027 GM 基礎組：100 分致勝配分與絕對紅線</h2>
+      <div class="adv-grid-4">
+        <div class="adv-card">
+          <div class="adv-icon"><img src="images/icon_car.png" alt="指定任務"></div>
+          <div class="adv-title">指定任務：54 分</div>
+          <div class="adv-desc">
+            • 佔總分超過一半！<br>
+            • 彈力車進行 <b>3 次觸發</b><br>
+            • 單次最高 <b>18 分 × 3 = 54 分</b><br>
+            • 40T 藍齒輪正投影定位計分
+          </div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-icon"><img src="images/icon_flow.png" alt="流暢度"></div>
+          <div class="adv-title">流暢度：20 分</div>
+          <div class="adv-desc">
+            • 零手動救援、零零件掉落<br>
+            • 每次<b>手動觸發或非預期掉落扣 2 分</b>（與關卡數量加權）<br>
+            • 結構穩固是滿分根基
+          </div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-icon"><img src="images/icon_stages.png" alt="關卡數量"></div>
+          <div class="adv-title">關卡數量：16 分</div>
+          <div class="adv-desc">
+            • <b>A～H 區</b>建置 <b>8 個基礎關卡</b><br>
+            • 每關 <b>2 分</b>，須貼 1~8 關卡標籤<br>
+            • <b>8 關科學概念不得重複</b><br>
+            • 第 8 關須觸發預備區彈力車
+          </div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-icon"><img src="images/icon_task.png" alt="關卡任務"></div>
+          <div class="adv-title">關卡任務：10 分</div>
+          <div class="adv-desc">
+            • 每個任務 <b>5 分</b>，須連動下一關：<br>
+            ① <b>小球垂直上升 30cm</b> 後觸發下一動作<br>
+            ② <b>小球凌空飛越水平 30cm</b> 後觸發下一動作
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1.55fr 1fr; gap:14px; margin-top:12px; align-items:center;">
+        <div class="tip-box" style="margin-top:0;">
+          <b style="color:var(--warn); font-size:1.1em;">🚫 基礎組三大天條（踩中直接痛失分數）：</b><br>
+          1. <b>禁用電力馬達</b>：基礎組機關設計<b>不得使用電力馬達</b>，若使用則該關卡數量分數不予計分！<br>
+          2. <b>禁用程式與遙控</b>：不得使用程式控制、遙控裝置，違者每項扣 5 分。<br>
+          3. <b>空間限制</b>：底面積 <b>150cm × 40cm</b>（10 片大底盤），復歸狀態高 <b>100cm 內不得超出底面積</b>（觸發後展開不限；捲線器可事先綁好繩子）。
+        </div>
+        <div style="text-align:center;">
+          <img src="images/ref_wgm_pie.jpg" alt="2027官方配分圖" style="height:130px; border-radius:8px; border:1px solid rgba(255,255,255,0.2);">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 4: 10片大底盤立體動線藍圖 ==================== -->
+    <section>
+      <h2>🗺️ 10 片大底盤（150×40cm）零交叉立體動線藍圖</h2>
+      <p style="font-size:0.38em; color:#cbd5e1; margin:-6px 0 8px 0;">
+        🔑 <b>滿分空間核心</b>：彈力車須沿下排 <code>H ➔ G ➔ F</code> 底盤前進，故下排 <b>F、G、H 區採「離地 18cm 架高天橋」</b>——<b>上層跑關卡、底層當淨空隧道跑道</b>！
+      </p>
+
+      <div class="board-map">
+        <!-- 上排 A ~ E -->
+        <div class="board-cell">
+          <div class="zone-id"><span>A 區</span><span class="stage-tag">第 1 關 (起點)</span></div>
+          <div class="cell-title">① 重心或骨牌</div>
+          <div class="cell-desc">• 小紅栓記憶定位<br>• L型底座防反倒<br>• 尾端加大骨牌推入 B 區</div>
+        </div>
+        <div class="board-cell">
+          <div class="zone-id"><span>B 區</span><span class="stage-tag">第 2 關 ➔ 下傳 F</span></div>
+          <div class="cell-title">② 單擺</div>
+          <div class="cell-desc">• A 字高架懸吊 60T 重錘<br>• 圓弧擺動向下跨排撞擊 <b>F 區天橋</b></div>
+        </div>
+        <div class="board-cell" style="border:2px solid var(--warn);">
+          <div class="zone-id"><span>C 區</span><span class="stage-tag" style="background:#d97706;">第 5 關 ★任務二</span></div>
+          <div class="cell-title">⑤ 力與加速度/重力</div>
+          <div class="cell-desc">• 承接 G 區上升球<br>• 40cm 陡坡重力加速跳台<br>• <b>凌空飛越 30cm ➔ D 區</b></div>
+        </div>
+        <div class="board-cell">
+          <div class="zone-id"><span>D 區</span><span class="stage-tag">第 6 關</span></div>
+          <div class="cell-title">⑥ 軌道</div>
+          <div class="cell-desc">• 寬口緩衝接球漏斗<br>• <b>加裝兩側護欄/隔板</b>防彈珠跳出 ➔ 滾入 E 區</div>
+        </div>
+        <div class="board-cell">
+          <div class="zone-id"><span>E 區</span><span class="stage-tag">第 7 關 ➔ 下傳 H</span></div>
+          <div class="cell-title">⑦ 向心力及圓周運動</div>
+          <div class="cell-desc">• 高柱綁線懸掛重錘<br>• 繞柱旋轉 270° 順勢下旋掃向 <b>H 區</b></div>
+        </div>
+
+        <!-- 下排 目標區 + F G H + 預備區 -->
+        <div class="board-cell target-zone">
+          <div class="zone-id"><span style="color:#f87171;">🎯 目標區</span><span class="stage-tag" style="background:#dc2626;">正上方淨空</span></div>
+          <div class="cell-title">12 根紅棒得分陣</div>
+          <div class="cell-desc">• 編號 <code>7331-W11-N1R</code><br>• <b>正投影上方禁放任何機關</b><br>• 最左側第 6 區間 <b>8+3=11分</b></div>
+        </div>
+        <div class="board-cell overpass">
+          <div class="zone-id"><span style="color:var(--warn);">F 區 (天橋)</span><span class="stage-tag">第 3 關</span></div>
+          <div class="cell-title">③ 槓桿 (上層)</div>
+          <div class="cell-desc">• 上層：第一類蹺蹺板連桿撥開 G 區卡榫<br>• <b>底層：⬅ 彈力車淨空跑道</b></div>
+        </div>
+        <div class="board-cell overpass">
+          <div class="zone-id"><span style="color:var(--warn);">G 區 (天橋)</span><span class="stage-tag" style="background:#d97706;">第 4 關 ★任務一</span></div>
+          <div class="cell-title">④ 棘輪 (上層)</div>
+          <div class="cell-desc">• 上層：棘輪解鎖配重捲線，<b>小球垂直上升 30cm ➔ C 區</b><br>• <b>底層：⬅ 彈力車淨空跑道</b></div>
+        </div>
+        <div class="board-cell overpass">
+          <div class="zone-id"><span style="color:var(--warn);">H 區 (後側架高)</span><span class="stage-tag">第 8 關 (終點)</span></div>
+          <div class="cell-title">⑧ 作用力與反作用力</div>
+          <div class="cell-desc">• 後側高架碰撞推桿伸入預備區壓下扳機<br>• <b>底層：⬅ 彈力車淨空跑道</b></div>
+        </div>
+        <div class="board-cell prep-zone">
+          <div class="zone-id"><span style="color:var(--success);">🚗 預備區</span><span class="stage-tag" style="background:#16a34a;">指定任務 (54分)</span></div>
+          <div class="cell-title">40T 彈力車待命</div>
+          <div class="cell-desc">• 水平裝 40T 藍齒輪<br>• 第 8 關自動觸發<br>• <b>⬅ 沿 H·G·F 底盤直入目標區</b></div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        💡 <b>動線記憶口訣</b>：<b>「左上 A 骨牌出發 ➔ B 單擺下擊 F 槓桿 ➔ G 棘輪電梯垂直升 30cm 上 C 塔 ➔ C 跳台凌空飛 30cm 入 D 軌 ➔ E 向心力繞柱下旋 ➔ H 碰撞推桿自動發車 ➔ 彈力車穿隧道直達目標區！」</b>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 5: 梁柱架高穩定三招 [ICON] ==================== -->
+    <section>
+      <h2>🏗️ 基本功秘訣：揚揚老師「梁柱架高穩定三招」</h2>
+      <p style="font-size:0.38em; color:#cbd5e1; margin:-6px 0 8px 0;">
+        要在 <code>F、G、H</code> 架設天橋並在 <code>G/C</code> 區搭出超過 45cm 的高塔，絕不能搖晃！播放清單《梁柱 1～3》三大必學結構：
+      </p>
+
+      <div class="stage-grid-3">
+        <div class="stage-card">
+          <h3><span>招式一：中段轉向 90° 錯位法</span><span class="badge badge-cyan">梁柱 1</span></h3>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <img src="images/icon_beam90.png" alt="" style="width:42px; height:42px; object-fit:contain; filter:drop-shadow(0 0 8px rgba(79,195,247,0.5));">
+            <span style="font-size:0.35em; color:var(--warn); font-weight:700;">解決「單向一推就散」與「插錯格」</span>
+          </div>
+          <ul>
+            <li>五孔長條同方向疊高時，順著卡榫方向極易晃動散開。</li>
+            <li><b>實戰做法</b>：將<b>中間那一段長條轉 90 度</b>垂直交錯接合！</li>
+            <li>不僅前後左右抗搖晃度暴增，<b>少插一格時會直接裝不進去</b>，兼具防呆效果！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_beam1.jpg" alt="梁柱轉向90度">
+        </div>
+
+        <div class="stage-card">
+          <h3><span>招式二：雙排 H 型對稱柱</span><span class="badge badge-orange">梁柱 2</span></h3>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <img src="images/icon_beamh.png" alt="" style="width:42px; height:42px; object-fit:contain; filter:drop-shadow(0 0 8px rgba(232,100,58,0.5));">
+            <span style="font-size:0.35em; color:var(--warn); font-weight:700;">G 區 30cm 電梯與 C 區高塔必用</span>
+          </div>
+          <ul>
+            <li>單排雙柱只有左右穩、前後一碰就倒。</li>
+            <li><b>實戰做法</b>：以四根立柱轉向對稱排列，每隔 2 段用短橫梁鎖成<b>雙排 H 型箱型柱</b>。</li>
+            <li>四面受力完全對稱，重錘下墜或單擺擺動時<b>紋絲不動</b>！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_beam2.jpg" alt="梁柱H型結構">
+        </div>
+
+        <div class="stage-card">
+          <h3><span>招式三：工程師支架交錯鎖固</span><span class="badge badge-green">梁柱 3</span></h3>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <img src="images/icon_bracket.png" alt="" style="width:42px; height:42px; object-fit:contain; filter:drop-shadow(0 0 8px rgba(129,199,132,0.5));">
+            <span style="font-size:0.35em; color:var(--warn); font-weight:700;">F·G·H 架高天橋跨接首選</span>
+          </div>
+          <ul>
+            <li>使用白色「<b>小小工程師長桁架</b>」立柱時，兩根平行直立仍會側傾。</li>
+            <li><b>實戰做法</b>：將兩支長桁架<b>一正一側（90° 轉向）並列</b>，頂端與中段用超長條橫向扣合。</li>
+            <li>用最少零件就能架出跨越彈力車跑道的<b>18cm 高架天橋</b>！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_beam3.jpg" alt="小小工程師支架">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 6: 章節一封面 [BG] ==================== -->
+    <section data-background-image="images/sec1_start.png"
+             data-background-opacity="0.28"
+             data-background-size="cover">
+      <div class="title-slide">
+        <div class="tag">STAGE 1 TO STAGE 3 · 零失誤開場連動</div>
+        <h1>章節一：前段啟動機構<br><span style="color:var(--accent2);">A 區骨牌 ➔ B 區單擺 ➔ F 區天橋槓桿</span></h1>
+        <p class="subtitle">
+          流暢度 20 分的第一道防線：<br>
+          運用「小紅栓記憶點」、「A 字高架單擺」與「第一類蹺蹺板槓桿」穩定傳遞力量
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 7: 第1關(骨牌) & 第2關(單擺) ==================== -->
+    <section>
+      <h2>🧱 第 1 關（A區）重心或骨牌 ＆ 第 2 關（B區）單擺</h2>
+      <div class="stage-grid-2">
+        <div class="stage-card">
+          <h3>
+            <span>第 1 關（A區）：重心或骨牌</span>
+            <span class="badge badge-cyan">科學概念 #1</span>
+          </h3>
+          <ul>
+            <li><b>痛點解決</b>：比賽現場重置 3 次時，骨牌常擺歪或不小心往後碰倒！</li>
+            <li><b>揚揚老師 3 大秘訣（《骨牌位置記憶點》）</b>：
+              <ol>
+                <li><b>小紅栓定位點</b>：在底盤孔位插上<b>紅色單凸栓</b>當擋點，每次復歸只要把骨牌靠齊紅栓，間距 100% 一模一樣！</li>
+                <li><b>L 型單向底座</b>：骨牌底部加上短長條做成「<b>L 型腳</b>」，往後推完全不會倒，只會精準往前倒！</li>
+                <li><b>尾端漸進加大</b>：最後兩張骨牌加高加寬，倍增撞擊力道推開 B 區單擺插銷。</li>
+              </ol>
+            </li>
+            <li>⚠️ <b>邊界注意</b>：A 區下方即為目標區，骨牌倒下後<b>絕對不可超出 A 區下緣投影線</b>！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_domino.jpg" alt="骨牌位置記憶點與L型底座">
+        </div>
+
+        <div class="stage-card">
+          <h3>
+            <span>第 2 關（B區）：單擺</span>
+            <span class="badge badge-orange">科學概念 #2</span>
+          </h3>
+          <ul>
+            <li><b>科學原理</b>：懸吊重錘受重力位能與動能週期轉換，沿固定圓弧軌跡擺動撞擊。</li>
+            <li><b>揚揚老師組裝技巧（《小技巧 8 單擺》）</b>：
+              <ol>
+                <li><b>雙柱門型懸吊架</b>：在 B 區搭設 30cm 高門型架，頂端橫軸穿過長條作為擺臂（比棉線更不會左右亂飄！）。</li>
+                <li><b>擺錘配重</b>：擺臂末端安裝 <b>2 顆 60T 黃色大齒輪</b>增加轉動慣量。</li>
+                <li><b>跨排精準打擊</b>：第 1 關尾端骨牌撞開水平支撐栓 ➔ 擺錘向下擺動，直接撞擊正下方 <b>F 區天橋上的槓桿受擊板</b>！</li>
+              </ol>
+            </li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_pendulum.jpg" alt="單擺機構示範">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 8: 第3關(槓桿) ==================== -->
+    <section>
+      <h2>⚖️ 第 3 關（F區架高天橋）：槓桿原理與跨區連動</h2>
+      <div class="stage-grid-2">
+        <div class="stage-card">
+          <h3>
+            <span>第 3 關（F區天橋）：槓桿</span>
+            <span class="badge badge-green">科學概念 #3</span>
+          </h3>
+          <ul>
+            <li><b>三類槓桿靈活選用（《小技巧 11 槓桿》）</b>：
+              <ul>
+                <li><b>第一類槓桿（支點在中）</b>：如蹺蹺板、剪刀式伸縮連桿，改變施力方向最直覺！</li>
+                <li><b>第二類槓桿（抗力點在中）</b>：施力臂＞抗力臂，適合需要<b>大力量拔開緊卡榫</b>的場合。</li>
+                <li><b>第三類槓桿（施力點在中）</b>：費力但<b>省時、移動距離放大</b>。</li>
+              </ul>
+            </li>
+            <li><b>本關實戰配置（F 區離地 18cm 天橋上）</b>：
+              <ul>
+                <li>採用<b>第一類蹺蹺板槓桿 ＋ 剪刀連桿</b>：B 區單擺由上往下砸中左端受擊盤 ➔ 右端立刻向上翹起 ➔ 拉動連桿直接<b>向上拔開隔壁 G 區棘輪的止動爪</b>！</li>
+              </ul>
+            </li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_lever.jpg" alt="槓桿原理示範">
+        </div>
+
+        <div class="stage-card" style="justify-content:flex-start; gap:10px;">
+          <h3>
+            <span>🔍 F 區「雙層天橋」淨空檢核規格</span>
+            <span class="badge badge-warn">避坑重點</span>
+          </h3>
+          <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:12px; font-size:0.36em; line-height:1.65; color:#e2e8f0;">
+            <p style="margin:0 0 6px 0; color:var(--accent2); font-weight:700;">為什麼第 3 關要架高在 F 區上空？</p>
+            1. 規則允許 <b>F、G、H 區正投影上方有關卡物件</b>（只有目標區正上方禁放）。<br>
+            2. 但彈力車從預備區出發後，<b>車輪必須沿 H ➔ G ➔ F 底盤前進，且車體其他部分不得碰觸任何物件（否則扣 3 分）</b>。<br>
+            3. <b>標準尺寸</b>：<br>
+            　• 天橋立柱緊貼 F 區底盤<b>最前緣與最後緣第 1 排孔位</b>。<br>
+            　• 中央留出 <b>寬度 ≥ 28cm、高度 ≥ 18cm</b> 的「黃金隧道」。<br>
+            　• 槓桿翹起與復歸的所有連桿皆在 18cm 以上運作，與底層彈力車 <b>100% 零干擾</b>！
+          </div>
+          <div class="tip-box" style="margin-top:0;">
+            💡 <b>組裝小撇步</b>：在槓桿支點處加上<b>黑色軸扣與墊片</b>減少側向摩擦，受擊盤面積做大（5×5格），確保單擺百發百中！
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 9: 章節二封面 [BG] ==================== -->
+    <section data-background-image="images/sec2_tasks.png"
+             data-background-opacity="0.28"
+             data-background-size="cover">
+      <div class="title-slide">
+        <div class="tag">STAGE 4 TO STAGE 5 · 關卡任務 10 分全拿</div>
+        <h1>章節二：攻克兩大指定關卡任務<br><span style="color:var(--warn);">垂直上升 30cm（5分）× 凌空飛越 30cm（5分）</span></h1>
+        <p class="subtitle">
+          捨棄高失誤率的複雜連桿，採用國小組最穩定的<br>
+          「<b>G 區棘輪配重捲線電梯</b>」與「<b>C➔D 高架重力位能加速跳台</b>」
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: 第4關(棘輪 + 垂直上升30cm) ==================== -->
+    <section>
+      <h2>🛗 第 4 關（G區天橋）：【棘輪】× 任務一「小球垂直上升 30cm」</h2>
+      <div class="stage-grid-2">
+        <div class="stage-card task-highlight">
+          <h3>
+            <span>第 4 關（G區）：棘輪配重捲線電梯</span>
+            <span class="badge badge-warn">科學概念 #4 ＋ 任務一 (5分)</span>
+          </h3>
+          <ul>
+            <li><b>任務條件</b>：小球須<b>垂直上升 30 公分</b>後，成功觸發下一個動作（5 分）。</li>
+            <li><b>揚揚老師機構拆解（《小技巧 10 棘輪》）</b>：
+              <ol>
+                <li><b>頂端同軸捲線器＋棘輪</b>：在 G 區與 C 區交界立起 <b>48cm 高雙排 H 型塔柱</b>，頂端橫軸同軸固定「棘輪齒輪」與「雙捲線器」。</li>
+                <li><b>棘輪單向鎖定重錘</b>：左繩懸掛<b>重錘盒</b>（裝 4~5 顆鋼珠/重物）於 45cm 高處；右繩連接底部的<b>垂直滑軌托球架</b>。用長條止動爪卡住棘輪齒，平時完全鎖死不滑脫！</li>
+                <li><b>瞬間解鎖垂直拉升</b>：第 3 關槓桿撥開止動爪 ➔ 重錘垂直下墜拉動捲線軸 ➔ 托球架沿雙滑軌將小球<b>垂直拉升 35cm（超越 30cm 標準！）</b>直達塔頂！</li>
+              </ol>
+            </li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_ratchet.jpg" alt="棘輪綁重物捲線機構">
+        </div>
+
+        <div class="stage-card" style="justify-content:space-between;">
+          <h3>
+            <span>⚙️ 垂直上升 30cm 穩定度調校細節</span>
+            <span class="badge badge-cyan">滿分關鍵</span>
+          </h3>
+          <ul style="font-size:0.36em;">
+            <li><b>規則紅利善用</b>：導讀影片明定「<b>捲線器可事先綁好繩子</b>」！賽前先將棉線長度精確綁在 35cm 行程處，現場組裝省時又精準。</li>
+            <li><b>防卡死雙導軌</b>：托球架兩側必須套在兩根垂直光滑長條（或圓管）上滑動，避免上升途中旋轉卡住。</li>
+            <li><b>頂端自動卸球</b>：托球架底板做成微傾 10°，當上升至 35cm 頂端撞到擋塊時，小球自動滾出托架，直接進入 <b>C 區高塔跳台</b>！</li>
+            <li><b>替代方案補充（《軌道 2》）</b>：播放清單亦介紹「連桿階梯上升軌道」，但需多段推桿同步；國小組實戰強烈首推「<b>棘輪配重捲線電梯</b>」，成功率近 100%！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_track2.jpg" alt="連桿上升軌道機構對照">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 11: 第5關(力與加速度/重力位能 + 凌空飛越30cm) ==================== -->
+    <section>
+      <h2>🚀 第 5 關（C➔D區）：【力與加速度或重力位能】× 任務二「凌空飛越 30cm」</h2>
+      <div class="stage-grid-2">
+        <div class="stage-card task-highlight">
+          <h3>
+            <span>第 5 關（C區）：高架重力加速斜坡跳台</span>
+            <span class="badge badge-warn">科學概念 #5 ＋ 任務二 (5分)</span>
+          </h3>
+          <ul>
+            <li><b>任務條件</b>：小球須<b>凌空飛越水平距離 30 公分</b>後，觸發下一個動作（5 分）。</li>
+            <li><b>物理原理</b>：利用高處重力位能 <code>U = mgh</code> 轉化為動能 <code>K = ½mv²</code>，在斜坡產生穩定加速度衝出跳台。</li>
+            <li><b>揚揚老師組裝技巧（《小技巧 5 重力位能》＆《軌道 1》）</b>：
+              <ol>
+                <li><b>45cm 高位差俯衝軌道</b>：承接第 4 關送上塔頂的小球（選用實心重塑膠球或玻璃珠，抗風阻最佳），沿 C 區 45° 雙圓管陡坡俯衝而下。</li>
+                <li><b>三孔長條微調起跳仰角</b>：在跳台出口處（高約 22cm）利用「<b>三孔長條</b>」微調斜率，將起跳仰角鎖定在 <b>15°～20°</b>。</li>
+                <li><b>實測 32cm 水平淨空</b>：從 C 區跳台端點到 D 區接球漏斗前緣，用尺量測水平距離設為 <b>32cm</b>（預留 2cm 安全裕度，裁判一眼認可！）。</li>
+              </ol>
+            </li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_gravity.jpg" alt="重力位能與斜坡加速">
+        </div>
+
+        <div class="stage-card">
+          <h3>
+            <span>🛠️ 軌道不斷裂與接球漏斗防彈出秘訣</span>
+            <span class="badge badge-green">軌道 1 技巧</span>
+          </h3>
+          <ul style="font-size:0.36em;">
+            <li><b>跨接轉軸防斷裂（《軌道組裝小技巧 1》）</b>：
+              <ul>
+                <li>斜坡軌道千萬不可硬壓固定在死孔位上（會產生公差導致長條彎曲裂開、球滾偏）。</li>
+                <li><b>正確做法</b>：高低兩端支柱只穿過<b>單顆紅栓當旋轉軸心</b>，讓軌道自然斜跨在兩柱之間，再用三孔長條鎖定角度！</li>
+              </ul>
+            </li>
+            <li><b>D 區「寬口消能接球漏斗」設計</b>：
+              <ul>
+                <li>小球飛越 32cm 後衝力極大，D 區入口須搭設 <b>10×10 格寬口漏斗</b>，後壁加裝<b>懸吊擺片（或鬆動擋板）</b>吸收動能，讓球乖乖落入第 6 關軌道！</li>
+              </ul>
+            </li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_track1.jpg" alt="軌道組裝小技巧">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 12: 第6~8關(軌道、向心力圓周、作用力與反作用力) ==================== -->
+    <section>
+      <h2>🌀 後段收尾（第 6～8 關：D ➔ E ➔ H）：穩定導引並自動觸發彈力車</h2>
+      <div class="stage-grid-3">
+        <div class="stage-card">
+          <h3><span>第 6 關（D區）：軌道</span><span class="badge badge-cyan">科學概念 #6</span></h3>
+          <ul>
+            <li><b>解答篇第 2 題必考技巧</b>：軌道上如何避免彈珠或球彈出？答案就是加裝<b>「隔板 / 護欄」</b>！</li>
+            <li><b>實戰做法</b>：在雙平行長條軌道兩側，每隔 5 格向上加裝一層側邊護欄長條。</li>
+            <li>將飛越落下的小球穩定導引通過 D 區，撞開 E 區高柱頂端的擋桿。</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_track.jpg" alt="軌道加裝護欄">
+        </div>
+
+        <div class="stage-card">
+          <h3><span>第 7 關（E區）：向心力及圓周運動</span><span class="badge badge-orange">科學概念 #7</span></h3>
+          <ul>
+            <li><b>揚揚老師點名最適合轉向收尾的機構（《小技巧 4》）</b>！</li>
+            <li><b>實戰做法</b>：在 E 區立一根 35cm 單柱，頂端綁棉線懸吊一顆 60T 黃色齒輪重物並停在平放高台上。</li>
+            <li>第 6 關小球撞落齒輪後，齒輪受繩子<b>向心力牽引繞著柱子做圓周旋轉而下</b>，精準轉向掃入下方 H 區！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_centripetal.jpg" alt="向心力及圓周運動">
+        </div>
+
+        <div class="stage-card">
+          <h3><span>第 8 關（H區）：作用力與反作用力</span><span class="badge badge-green">科學概念 #8 (終點)</span></h3>
+          <ul>
+            <li><b>自動觸發預備區（《小技巧 7》）</b>：H 區後側架設雙向碰撞滑動推桿（底層仍維持淨空跑道）。</li>
+            <li>E 區圓周旋轉重錘撞擊推桿左端 ➔ 推桿受碰撞力與反作用力向右滑出，直接<b>壓下預備區彈力車的棘輪釋放桿</b>！</li>
+            <li>達成<b>「第 8 關自動觸發車體啟動」穩拿 2 分</b>！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_action.jpg" alt="作用力與反作用力">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 13: 科學概念參照表雙重填報秘訣 ==================== -->
+    <section>
+      <h2>📋 揚揚老師私房秘訣：《科學概念參照表》雙重填報保底策略</h2>
+      <div style="display:grid; grid-template-columns: 1.45fr 1fr; gap:14px; align-items:start;">
+        <div>
+          <table class="clean-table">
+            <thead>
+              <tr>
+                <th>關卡與分區</th>
+                <th>主申報科學概念（8種不重複）</th>
+                <th>第二雙重保底概念（防爭議備援）</th>
+                <th>對應播放清單技巧</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>第 1 關 (A區)</b></td>
+                <td><span class="badge badge-cyan">1. 重心或骨牌</span></td>
+                <td>慣性定律</td>
+                <td>小紅栓位置記憶點＋L型底座</td>
+              </tr>
+              <tr>
+                <td><b>第 2 關 (B區)</b></td>
+                <td><span class="badge badge-cyan">2. 單擺</span></td>
+                <td>力與加速度或重力位能</td>
+                <td>A字雙柱高架擺錘跨排打擊</td>
+              </tr>
+              <tr>
+                <td><b>第 3 關 (F區天橋)</b></td>
+                <td><span class="badge badge-cyan">3. 槓桿</span></td>
+                <td>連桿</td>
+                <td>第一類蹺蹺板槓桿＋18cm天橋</td>
+              </tr>
+              <tr>
+                <td><b>第 4 關 (G區天橋)</b></td>
+                <td><span class="badge badge-warn">4. 棘輪 ★上升30cm</span></td>
+                <td>輪軸 / 滑輪裝置</td>
+                <td>棘輪止動爪＋重物捲線器拉升</td>
+              </tr>
+              <tr>
+                <td><b>第 5 關 (C➔D區)</b></td>
+                <td><span class="badge badge-warn">5. 力與加速度或重力位能 ★飛越30cm</span></td>
+                <td>斜面 / 慣性定律</td>
+                <td>高架斜坡加速＋三孔長條調仰角</td>
+              </tr>
+              <tr>
+                <td><b>第 6 關 (D區)</b></td>
+                <td><span class="badge badge-cyan">6. 軌道</span></td>
+                <td>摩擦力</td>
+                <td>雙軌加裝隔板護欄防彈珠跳出</td>
+              </tr>
+              <tr>
+                <td><b>第 7 關 (E區)</b></td>
+                <td><span class="badge badge-cyan">7. 向心力及圓周運動</span></td>
+                <td>單擺 / 重力位能</td>
+                <td>高柱綁線懸吊齒輪繞柱旋轉下滑</td>
+              </tr>
+              <tr>
+                <td><b>第 8 關 (H區後側)</b></td>
+                <td><span class="badge badge-cyan">8. 作用力與反作用力</span></td>
+                <td>慣性定律 / 連桿</td>
+                <td>碰撞反推滑桿自動觸發預備區</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align:left;">
+          <div class="tip-box" style="margin-top:0;">
+            <b style="color:var(--accent2); font-size:1.1em;">💡 為什麼要「雙重填報」？（《小技巧 1 慣性定律》重點）</b><br>
+            1. 參照表規定：<b>每個關卡最多可填 2 個科學概念，且各關採計概念不得重複</b>。<br>
+            2. 揚揚老師提醒：<b>「10 個機關裡有 8、9 個都有慣性定律與摩擦力！」</b><br>
+            3. 因此<b>千萬別把「慣性定律、摩擦力、輪軸」先浪費在前面</b>，而是每關先填明確的專屬機構（骨牌、單擺、槓桿、棘輪、軌道、圓周運動），再把<b>「慣性定律、摩擦力、連桿、輪軸」填作每關的第 2 個保底概念</b>！就算某關主概念被裁判嚴格審視，也能立刻由第 2 概念無縫遞補拿滿 16 分！
+          </div>
+          <img src="images/ref_p1_table.jpg" alt="科學概念及機械結構參照表" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-top:8px; border:1px solid rgba(255,255,255,0.2);">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 14: 指定任務核心(54分) [ICON] ==================== -->
+    <section>
+      <h2>🎯 指定任務（54分）：彈力車與自製目標區硬性規範</h2>
+      <div class="stage-grid-2">
+        <div class="stage-card">
+          <h3>
+            <span>1. 自製目標區（紅棒 7331-W11-N1R）</span>
+            <span class="badge badge-orange">不合規＝0分！</span>
+          </h3>
+          <ul>
+            <li><b>位置與零件</b>：位於下排最左格（A 區正下方），須依官方圖示前後兩排插設 <b>12 根紅色圓棒（`7331-W11-N1R`）</b>。</li>
+            <li><b>高度與淨空</b>：紅棒安裝高度可自訂，但<b>目標區正投影上方不得有任何其他機關物件</b>（F、G、H 及預備區則不在此限）。</li>
+            <li><b>關鍵陷阱</b>：規則寫「紅棒被小車碰撞掉落或位移不會被扣分」，但後面又規定「<b>車體觸發移動後不得觸碰到其他任何物件，否則無法獲得未觸碰分數 3 分</b>」！因此<b>絕對不能碰到紅棒</b>！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_wgm_target.jpg" alt="自製目標區規範">
+        </div>
+
+        <div class="stage-card">
+          <h3>
+            <span>2. 40T 定位齒輪彈力車（7346-W10-C1B）</span>
+            <span class="badge badge-cyan">單次 18分 × 3次 = 54分</span>
+          </h3>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+            <img src="images/icon_gear40.png" alt="40T齒輪" style="width:46px; height:46px; object-fit:contain; filter:drop-shadow(0 0 8px rgba(79,195,247,0.6));">
+            <span style="font-size:0.35em; color:var(--warn); font-weight:700;">車體與 40T 藍色齒輪皆須「水平放置」於預備區！</span>
+          </div>
+          <ul>
+            <li><b>動力限制</b>：僅限<b>橡皮筋</b>或橡皮筋發射裝置，沿 H·G·F 底盤前進。</li>
+            <li><b>單次滿分 18 分 4 大構成（共測 3 次取總和）</b>：
+              <ol>
+                <li>第 8 關<b>自動觸發</b>啟動：<b>+2 分</b></li>
+                <li>40T 齒輪至目標區水平距離 <b>超過 90cm</b>：<b>+2 分</b></li>
+                <li>僅車輪在底盤運作，<b>未觸碰任何物體（含紅棒/支架）</b>：<b>+3 分</b></li>
+                <li>40T 齒輪<b>完全進入目標區（+8分）</b>且停在最左加分區（<b>+3分</b>）：<b>+11 分</b></li>
+              </ol>
+            </li>
+          </ul>
+          <img class="ref-img" src="images/ref_wgm_car40t.jpg" alt="40T定位齒輪彈力車">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 15: 彈力車滿分結構拆解 ==================== -->
+    <section>
+      <h2>🏎️ 彈力車滿分結構拆解：彈力 × 齒輪比 × 垂直傳導 × 摩擦力</h2>
+      <div class="stage-grid-3">
+        <div class="stage-card">
+          <h3><span>① 扇形齒輪「垂直傳導」縮車寬</span><span class="badge badge-cyan">垂直傳導篇</span></h3>
+          <ul>
+            <li><b>為什麼一般車會撞紅棒？</b>因為馬達/齒輪橫裝時車體太寬！</li>
+            <li><b>揚揚老師解答篇第 1、3 題神技</b>：利用<b>扇形齒輪（冠狀齒輪）垂直傳導</b>，將齒輪組改為直向排列，再轉 90° 傳遞給後輪軸！</li>
+            <li>車寬直接縮減至 <b>11cm 內</b>，在目標區兩排紅棒間（寬約 22cm）擁有超大容錯空間！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p2_vertical.jpg" alt="扇形齒輪垂直傳導">
+        </div>
+
+        <div class="stage-card">
+          <h3><span>② 齒輪比調速 ＋ 定距繩長煞車</span><span class="badge badge-orange">齒輪比＆彈力篇</span></h3>
+          <ul>
+            <li><b>防暴衝打滑（《摩擦力》＆《齒輪比》）</b>：四輪皆裝<b>寬版高摩擦橡膠胎</b>；後輪軸以 <b>60T 大齒輪帶動 20T 小齒輪</b>延伸行程。</li>
+            <li><b>定距自動煞停秘訣</b>：不直接把橡皮筋勾在車輪軸！而是<b>橡皮筋拉動棉線纏繞後軸</b>，棉線長度精確設為 <code>108cm</code> 行駛圈數——線放完瞬間後軸自動鎖死煞停！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_p1_elastic.jpg" alt="彈力車橡皮筋結構">
+        </div>
+
+        <div class="stage-card">
+          <h3><span>③ 40T 藍齒輪車頭外伸安裝法</span><span class="badge badge-green">正投影得分最大化</span></h3>
+          <ul>
+            <li>規則以「<b>40T 藍齒輪的正投影位置</b>」判定區域得分與加分（0.5～3分）！</li>
+            <li><b>高分組裝法</b>：將 40T 藍齒輪<b>水平安裝在車頭最前端中央</b>（但注意不可超出左邊界！）。</li>
+            <li>當前輪剛抵達目標區後段時，車頭的 40T 齒輪正投影已經輕鬆跨入 <b>+2.5 ～ +3 分黃金區間</b>！</li>
+          </ul>
+          <img class="ref-img" src="images/ref_wgm_score_bonus.jpg" alt="40T齒輪加分區">
+        </div>
+      </div>
+
+      <table class="clean-table" style="margin-top:8px;">
+        <thead>
+          <tr>
+            <th>校準項目</th>
+            <th>橡皮筋配置建議</th>
+            <th>纏繞圈數（60T 傳動輪基準）</th>
+            <th>預估行駛距離（預備區起算）</th>
+            <th>40T 齒輪停駐目標與單次得分</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>保守穩健檔（第 1 次保底）</b></td>
+            <td>雙股 16 號新橡皮筋並聯</td>
+            <td><b>5.5 圈</b>（定距棉線 102cm）</td>
+            <td>約 102 ～ 105 cm</td>
+            <td>目標區第 4～5 虛線區（8 + 2.0~2.5 + 7 = <b>17.0～17.5 分</b>）</td>
+          </tr>
+          <tr>
+            <td><b>滿分衝刺檔（第 2、3 次）</b></td>
+            <td>雙股 16 號新橡皮筋並聯（每次換新防疲乏）</td>
+            <td><b>6.0 圈</b>（定距棉線 108cm）</td>
+            <td>約 107 ～ 110 cm（距左界留 4cm 裕度）</td>
+            <td>目標區最深第 6 虛線區（8 + 3.0 + 7 = <b>18.0 分滿分！</b>）</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== SLIDE 16: 滑桿視覺化演示 [VIZ] ==================== -->
+    <section>
+      <h2>🔍 視覺化對比：為什麼「不碰導軌＆定距煞車」能多拿 24 分？</h2>
+      <p style="font-size:0.36em; color:#cbd5e1; margin:-6px 0 8px 0;">
+        👉 <b>拖曳下方滑桿</b>，比較「<b>一般失誤車（擦撞紅棒＋衝過頭壓左界）</b>」與「<b>中正滿分定距車（窄車體零碰撞＋精準停駐 +3 分區）</b>」的三次總分差異：
+      </p>
+
+      <div style="position:relative; height:365px; border-radius:14px; overflow:hidden; border:2px solid rgba(79,195,247,0.35); select-none;">
+        <!-- BEFORE: 一般失誤車 -->
+        <div id="viz-before" style="position:absolute; inset:0; background:linear-gradient(135deg, #1f1218 0%, #2d161e 100%); padding:18px 24px; box-sizing:border-box; text-align:left; display:grid; grid-template-columns:1.15fr 1fr; gap:18px; align-items:center;">
+          <div>
+            <div style="display:inline-block; background:#ef4444; color:#fff; font-size:0.36em; font-weight:800; padding:3px 12px; border-radius:20px; margin-bottom:8px;">
+              ❌ 一般失誤方案：依賴護欄導向 ＋ 無定距煞車
+            </div>
+            <h3 style="color:#fca5a5; font-size:0.62em; margin:4px 0 10px 0;">單次僅得 10 分 × 3 次 ＝ 30 分（痛失 24 分！）</h3>
+            <ul style="font-size:0.38em; color:#fecdd3; line-height:1.7; padding-left:1.2em; margin:0;">
+              <li><b>自動觸發</b>：+2 分 ｜ <b>水平距離 &gt;90cm</b>：+2 分</li>
+              <li>❌ <b>車身擦撞導軌或紅棒</b>：違反「僅輪子在底盤運作、未觸碰任何物體」，<b>直接扣光 3 分（得 0 分）</b>！</li>
+              <li>❌ <b>橡皮筋衝過頭超出左邊界</b>：40T 齒輪超出目標區左緣，區域分數降為 <b>6 分（若再壓上下界變 6-1=5 分）</b>，且<b>完全沒有目標區 +3 加分</b>！</li>
+              <li>⚠️ <b>橡皮筋未換新</b>：第 2、3 次彈性疲乏只停在 F 區（6分），三次總分暴跌！</li>
+            </ul>
+          </div>
+          <div style="text-align:center;">
+            <img src="images/ref_wgm_score_map.jpg" alt="壓線扣分示意" style="width:100%; max-height:260px; object-fit:contain; border-radius:10px; border:2px solid #ef4444;">
+          </div>
+        </div>
+
+        <!-- AFTER: 滿分定距車 -->
+        <div id="viz-after" style="position:absolute; inset:0; clip-path:inset(0 50% 0 0); background:linear-gradient(135deg, #0d211d 0%, #102a38 100%); padding:18px 24px; box-sizing:border-box; text-align:left; display:grid; grid-template-columns:1.15fr 1fr; gap:18px; align-items:center;">
+          <div>
+            <div style="display:inline-block; background:#10b981; color:#0d1117; font-size:0.36em; font-weight:800; padding:3px 12px; border-radius:20px; margin-bottom:8px;">
+              ✅ 中正滿分方案：扇形齒輪窄車體 ＋ 棉線定距鎖死煞車
+            </div>
+            <h3 style="color:#6ee7b7; font-size:0.62em; margin:4px 0 10px 0;">單次拿滿 18 分 × 3 次 ＝ 54 分大滿貫！</h3>
+            <ul style="font-size:0.38em; color:#d1fae5; line-height:1.7; padding-left:1.2em; margin:0;">
+              <li>✔ <b>第 8 關推桿自動觸發</b>：穩拿 <b>+2 分</b></li>
+              <li>✔ <b>水平移動 108cm（&gt;90cm）</b>：穩拿 <b>+2 分</b></li>
+              <li>✔ <b>11cm 窄車身＋前輪精準對位</b>：全程僅四輪接觸底盤，零擦撞紅棒，穩拿 <b>+3 分</b>！</li>
+              <li>✔ <b>108cm 定距棉線煞停</b>：40T 藍齒輪完全在目標區內（<b>+8 分</b>）並停在第 6 虛線區（<b>+3 分</b>）＝ <b>11 分滿分</b>！</li>
+            </ul>
+          </div>
+          <div style="text-align:center;">
+            <img src="images/ref_wgm_score_bonus.jpg" alt="滿分加分區示意" style="width:100%; max-height:260px; object-fit:contain; border-radius:10px; border:2px solid #10b981;">
+          </div>
+        </div>
+
+        <!-- 分隔光線 -->
+        <div id="viz-divider" style="position:absolute; top:0; left:50%; width:4px; height:100%;
+          background:linear-gradient(to bottom, transparent, var(--accent2), #fff, var(--accent2), transparent);
+          box-shadow:0 0 14px var(--accent2); pointer-events:none;"></div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:14px; margin-top:10px; justify-content:center;">
+        <span style="font-size:0.36em; color:#f87171; font-weight:700;">⬅ 100% 滿分定距車 (54分)</span>
+        <input id="viz-slider" type="range" min="0" max="100" value="50" style="width:420px; accent-color:var(--accent2); cursor:pointer;">
+        <span style="font-size:0.36em; color:#6ee7b7; font-weight:700;">一般失誤車 (30分) ➡</span>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 17: 規則快問快答投票 [INTERACT:poll] ==================== -->
+    <section id="slide-poll">
+      <h2 style="font-size:1.05em;">🗳️ 裁判規則快問快答：這台彈力車單次得幾分？</h2>
+      <div style="background:rgba(255,255,255,0.05); border-left:4px solid var(--warn); padding:10px 14px; border-radius:8px; font-size:0.38em; text-align:left; margin-bottom:10px; color:#f1f5f9;">
+        <b>【實戰情境題】</b>：第 8 關自動觸發彈力車後，車子順利移動超過 90cm 進入目標區，車上的 <b>40T 藍色齒輪完全停在目標區內的「+2 分」虛線格</b>（未壓邊界），但<b>停車時車頭不小心輕輕碰到了一根目標區紅色圓棒</b>。請問這一次觸發可拿幾分？
+      </div>
+
+      <div id="poll-options" style="display:flex; flex-direction:column; gap:9px;"></div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; font-size:0.36em; color:#94a3b8;">
+        <div>已作答人數：<span id="poll-total" style="color:var(--accent2); font-weight:700;">0</span> 人</div>
+        <button id="poll-reveal-btn" style="padding:6px 14px; border-radius:8px; background:rgba(255,183,77,0.2); color:var(--warn); border:1px solid var(--warn); font-weight:700; cursor:pointer; font-size:13px;">
+          💡 揭曉裁判標準詳解
+        </button>
+      </div>
+
+      <div id="poll-answer-box" style="display:none; margin-top:8px; background:rgba(129,199,132,0.14); border:1px solid var(--success); border-radius:8px; padding:10px 14px; font-size:0.36em; text-align:left; color:#e2e8f0;">
+        ✅ <b>正確答案是 B（14 分）！</b><br>
+        • 自動觸發（<b>2分</b>）＋ 水平距離 &gt;90cm（<b>2分</b>）＋ 完全進入目標區（<b>8分</b>）＋ 停在 +2 區間（<b>2分</b>）＝ <b>14 分</b>。<br>
+        • 為什麼少了 3 分？雖然目標區規則寫「紅棒被小車碰撞掉落或位移不會被扣分（指不扣目標區基本分）」，但評分條款明定：<b>「車體觸發移動後，不得觸碰到其他任何物件，否則無法獲得未觸碰分數 3 分！」</b>所以碰到紅棒會直接損失寶貴的 3 分！
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 18: 封底檢核清單 [BG] ==================== -->
+    <section data-background-image="images/ending.png"
+             data-background-opacity="0.35"
+             data-background-size="cover">
+      <h2>🏆 賽前黃金 5 分鐘：滿分出擊最終檢核清單</h2>
+      <div class="conclusion-grid">
+        <div class="conclusion-card positive">
+          <div class="cc-title">🔧 8 道基礎關卡 ＆ 兩大任務檢核</div>
+          <ul>
+            <li><b>貼妥 1～8 關卡標籤</b>，對照《科學概念參照表》確認 8 關主概念零重複、每關皆填第 2 保底概念。</li>
+            <li><b>復歸高度 ≤ 100cm</b>，且未觸發前所有零件皆在 150×40cm 底盤正投影內（A 區絕不外伸至目標區上方）。</li>
+            <li><b>第 1 關小紅栓定位</b>確認骨牌靠齊；<b>第 4 關棘輪捲線器</b>預先綁妥 35cm 上升行程。</li>
+            <li><b>第 5 關跳台與 D 區漏斗</b>拿尺實測水平淨空 ≥ 32cm；<b>第 6 關軌道</b>確認雙側護欄穩固。</li>
+          </ul>
+        </div>
+        <div class="conclusion-card caution">
+          <div class="cc-title">🚗 彈力車 54 分三次觸發檢核</div>
+          <ul>
+            <li><b>自製目標區 12 根紅棒（`7331-W11-N1R`）</b>孔位正確，正投影上方 100% 淨空。</li>
+            <li><b>40T 藍色定位齒輪（`7346-W10-C1B`）</b>與車體皆保持水平放置於預備區內。</li>
+            <li><b>F、G、H 天橋底層跑道</b>淨空無雜物，前輪直線準星對準目標區中央通道。</li>
+            <li><b>準備 6 條全新同批次橡皮筋</b>：三次正式觸發前，每次更換新橡皮筋並纏繞固定 6.0 圈（108cm 定距棉線）！</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:18px;">
+        <h3 style="color:var(--accent2); font-size:0.75em; margin-bottom:4px;">「結構穩、原理準、不碰棒、停滿分——2027 機關王冠軍就是你們！」</h3>
+        <p style="font-size:0.36em; color:#94a3b8; margin:0;">預祝中正國小機關王代表隊旗開得勝 · 勇奪滿分 100 分！</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    center: true,
+    progress: true,
+    controls: true,
+    slideNumber: 'c/t',
+    width: 1200,
+    height: 700,
+    margin: 0.06,
+    keyboardCondition: function(event) {
+      const target = event ? (event.target || (event.composedPath && event.composedPath()[0])) : null;
+      if (target && target.tagName) {
+        const t = target.tagName.toLowerCase();
+        if (t === 'input' || t === 'textarea' || t === 'select' || target.isContentEditable) {
+          return false;
+        }
+      }
+      const active = document.activeElement;
+      if (active && active.tagName) {
+        const a = active.tagName.toLowerCase();
+        if (a === 'input' || a === 'textarea' || a === 'select' || active.isContentEditable) {
+          return false;
+        }
+      }
+      return true;
+    },
+    plugins: []
+  });
+
+  // === VIZ 滑桿邏輯 ===
+  const vizSlider = document.getElementById('viz-slider');
+  if (vizSlider) {
+    vizSlider.addEventListener('input', function() {
+      const v = +this.value;
+      const afterEl = document.getElementById('viz-after');
+      const divEl = document.getElementById('viz-divider');
+      if (afterEl) afterEl.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+      if (divEl) divEl.style.left = v + '%';
+    });
+  }
+
+  // === Poll 詳解揭曉按鈕 ===
+  document.getElementById('poll-reveal-btn')?.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const box = document.getElementById('poll-answer-box');
+    if (box) {
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+  });
+</script>
+
+<!-- Firebase 即時互動 + 本機離線雙模支援 -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js';
+  import {
+    getFirestore, collection, addDoc, onSnapshot,
+    serverTimestamp, query, orderBy, doc, setDoc
+  } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+
+  const SLUG = 'wgm2027_gm_basic';
+  const COLORS = ['#4fc3f7','#e8643a','#ffb74d','#81c784','#ce93d8','#80deea','#f48fb1'];
+  let wcData = [];
+
+  // 預設種子詞彙，讓學生一打開就有參考並可隨時新增/清空
+  const DEFAULT_WORDS = [
+    '彈力車停在+3分區', '彈力車停在+3分區', '凌空飛越30cm', '凌空飛越30cm',
+    '垂直上升30cm', '棘輪配重電梯', '扇形齒輪垂直傳導', '向心力圓周旋轉',
+    '小紅栓骨牌定位', '梁柱轉向90度', '不碰紅棒拿3分', '40T藍齒輪定位'
+  ];
+
+  function getLocalWords() {
+    try {
+      const raw = localStorage.getItem(SLUG + '_wc_words');
+      if (raw === null) {
+        localStorage.setItem(SLUG + '_wc_words', JSON.stringify(DEFAULT_WORDS));
+        return [...DEFAULT_WORDS];
+      }
+      return JSON.parse(raw);
+    } catch(e) { return [...DEFAULT_WORDS]; }
+  }
+
+  function saveLocalWord(w) {
+    try {
+      const arr = getLocalWords();
+      arr.push(w);
+      localStorage.setItem(SLUG + '_wc_words', JSON.stringify(arr));
+      return arr;
+    } catch(e) { return []; }
+  }
+
+  function renderWordCloudData(words) {
+    const counts = {};
+    words.forEach(w => counts[w] = (counts[w] || 0) + 1);
+    wcData = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+    const totalEl = document.getElementById('wc-total');
+    const uniqueEl = document.getElementById('wc-unique');
+    if (totalEl) totalEl.textContent = words.length;
+    if (uniqueEl) uniqueEl.textContent = wcData.length;
+
+    const listEl = document.getElementById('wc-list');
+    if (listEl) {
+      listEl.innerHTML = wcData.slice(0, 12).map(([w, c]) =>
+        `<div style="display:flex;justify-content:space-between;padding:4px 0;
+                     border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span>${w}</span><span style="color:var(--accent);font-weight:700;">${c}</span>
+        </div>`
+      ).join('') || '<div style="color:#64748b;padding:8px 0;">尚無資料</div>';
+    }
+
+    const empty = document.getElementById('wc-empty');
+    if (empty) empty.style.display = wcData.length > 0 ? 'none' : '';
+    drawWordCloud();
+  }
+
+  function drawWordCloud() {
+    const canvas = document.getElementById('wc-canvas');
+    if (!canvas || typeof WordCloud === 'undefined') return;
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width < 10 || rect.height < 10) return;
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    if (wcData.length === 0) {
+      const ctx = canvas.getContext('2d');
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      return;
+    }
+    const maxCount = wcData[0][1];
+    WordCloud(canvas, {
+      list: wcData.map(([w, c]) => [w, Math.max(20, Math.round((c / maxCount) * 64))]),
+      gridSize: 8,
+      weightFactor: 1,
+      fontFamily: '"Microsoft JhengHei", "Noto Sans TC", sans-serif',
+      color: () => COLORS[Math.floor(Math.random() * COLORS.length)],
+      backgroundColor: 'transparent',
+      rotateRatio: 0.2,
+      shuffle: true,
+    });
+  }
+
+  // 初始化本地文字雲
+  renderWordCloudData(getLocalWords());
+
+  const inputEl = document.getElementById('wc-input');
+  const clearBtn = document.getElementById('wc-clear-input');
+
+  function updateClearBtn() {
+    if (clearBtn && inputEl) {
+      clearBtn.style.display = inputEl.value.trim() ? 'block' : 'none';
+    }
+  }
+
+  if (inputEl) {
+    inputEl.addEventListener('keydown', e => {
+      e.stopPropagation();
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        window.wcSubmit();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        inputEl.value = '';
+        updateClearBtn();
+      }
+    });
+    ['keyup', 'keypress', 'input'].forEach(evt => {
+      inputEl.addEventListener(evt, e => {
+        e.stopPropagation();
+        updateClearBtn();
+      });
+    });
+  }
+
+  document.querySelectorAll('.wc-quick').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const w = btn.getAttribute('data-word');
+      if (w) {
+        const updated = saveLocalWord(w);
+        renderWordCloudData(updated);
+      }
+    });
+  });
+
+  clearBtn?.addEventListener('click', e => {
+    e.stopPropagation();
+    if (inputEl) { inputEl.value = ''; updateClearBtn(); inputEl.focus(); }
+  });
+
+  let fdb = null;
+  let wordsRef = null;
+  let pollRef = null;
+
+  try {
+    const firebaseConfig = {
+      apiKey: "YOUR_FIREBASE_API_KEY",
+      authDomain: "teacherstudy-109ef.firebaseapp.com",
+      projectId: "teacherstudy-109ef",
+      storageBucket: "teacherstudy-109ef.firebasestorage.app",
+      messagingSenderId: "196599230156",
+      appId: "1:196599230156:web:cfe55d364df3ae1b9d5c69"
+    };
+    const app = initializeApp(firebaseConfig);
+    fdb = getFirestore(app);
+    wordsRef = collection(fdb, SLUG + '_wordcloud');
+    pollRef = doc(fdb, SLUG + '_poll', 'results');
+  } catch(e) {
+    console.info("離線快取模式運行中");
+  }
+
+  window.wcSubmit = function() {
+    if (!inputEl) return;
+    const word = inputEl.value.trim();
+    if (!word) { inputEl.focus(); return; }
+    const updated = saveLocalWord(word);
+    renderWordCloudData(updated);
+    inputEl.value = '';
+    updateClearBtn();
+    inputEl.focus();
+    if (wordsRef) {
+      addDoc(wordsRef, { word, created_at: serverTimestamp() }).catch(() => {});
+    }
+  };
+
+  document.getElementById('wc-btn')?.addEventListener('click', e => {
+    e.stopPropagation();
+    window.wcSubmit();
+  });
+
+  window.wcReset = function() {
+    localStorage.setItem(SLUG + '_wc_words', '[]');
+    renderWordCloudData([]);
+    if (inputEl) { inputEl.value = ''; updateClearBtn(); inputEl.focus(); }
+  };
+  document.getElementById('wc-reset-btn')?.addEventListener('click', e => {
+    e.stopPropagation();
+    window.wcReset();
+  });
+  document.getElementById('wc-reset-list-btn')?.addEventListener('click', e => {
+    e.stopPropagation();
+    window.wcReset();
+  });
+
+  Reveal.on('slidechanged', e => {
+    if (e.currentSlide?.id === 'slide-wordcloud') setTimeout(drawWordCloud, 150);
+  });
+
+  // === 單選投票邏輯（本機 + 雲端雙支援）===
+  const OPTIONS = [
+    { id: 'a', label: 'A. 17 分 — 紅棒被碰掉不扣分，所以拿滿 2 + 2 + 3 + 8 + 2 = 17 分' },
+    { id: 'b', label: 'B. 14 分 — 雖紅棒不扣分，但違反「除車輪外未觸碰任何物體」，痛失 3 分！' },
+    { id: 'c', label: 'C. 11 分 — 碰到紅棒連目標區基本分都折半' },
+    { id: 'd', label: 'D. 0 分 — 碰到目標區紅棒直接判定該次觸發失敗' },
+  ];
+
+  const userId = 'user_' + Math.random().toString(36).slice(2, 9);
+  let myVote = localStorage.getItem(SLUG + '_my_vote') || null;
+  let localVotes = JSON.parse(localStorage.getItem(SLUG + '_poll_votes') || '{"a":2,"b":8,"c":1,"d":0}');
+
+  const container = document.getElementById('poll-options');
+  if (container) {
+    OPTIONS.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.id = `poll-btn-${opt.id}`;
+      btn.innerHTML = `
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="flex:0 0 24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);
+                       display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#0d1117;"
+                id="poll-check-${opt.id}"></span>
+          <span style="flex:1;text-align:left;">${opt.label}</span>
+          <span id="poll-bar-wrap-${opt.id}"
+                style="flex:0 0 140px;height:10px;background:rgba(255,255,255,0.1);border-radius:5px;overflow:hidden;">
+            <div id="poll-bar-${opt.id}" style="height:100%;width:0;background:var(--accent2);border-radius:5px;transition:width 0.4s;"></div>
+          </span>
+          <span id="poll-pct-${opt.id}" style="flex:0 0 42px;text-align:right;font-size:0.8em;color:#cbd5e1;font-weight:700;">0%</span>
+        </div>
+      `;
+      btn.style.cssText = `width:100%;padding:11px 16px;background:rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.14);border-radius:10px;color:#fff;
+        font-size:0.42em;cursor:pointer;font-family:inherit;text-align:left;transition:all 0.2s;`;
+      btn.onclick = (e) => { e.stopPropagation(); vote(opt.id); };
+      container.appendChild(btn);
+    });
+  }
+
+  function renderPollUI(counts) {
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const totalEl = document.getElementById('poll-total');
+    if (totalEl) totalEl.textContent = total;
+    OPTIONS.forEach(opt => {
+      const pct = total > 0 ? Math.round((counts[opt.id] / total) * 100) : 0;
+      const bar = document.getElementById(`poll-bar-${opt.id}`);
+      const pctEl = document.getElementById(`poll-pct-${opt.id}`);
+      const check = document.getElementById(`poll-check-${opt.id}`);
+      const btn = document.getElementById(`poll-btn-${opt.id}`);
+      if (bar) bar.style.width = pct + '%';
+      if (pctEl) pctEl.textContent = pct + '%';
+      if (check && btn) {
+        if (myVote === opt.id) {
+          check.textContent = '✓';
+          check.style.background = 'var(--accent2)';
+          check.style.borderColor = 'var(--accent2)';
+          btn.style.borderColor = 'var(--accent2)';
+          btn.style.background = 'rgba(79,195,247,0.14)';
+        } else {
+          check.textContent = '';
+          check.style.background = 'transparent';
+          check.style.borderColor = 'rgba(255,255,255,0.3)';
+          btn.style.borderColor = 'rgba(255,255,255,0.14)';
+          btn.style.background = 'rgba(255,255,255,0.06)';
+        }
+      }
+    });
+  }
+
+  renderPollUI(localVotes);
+
+  async function vote(optId) {
+    if (myVote && localVotes[myVote] > 0) {
+      localVotes[myVote]--;
+    }
+    myVote = optId;
+    localVotes[optId] = (localVotes[optId] || 0) + 1;
+    localStorage.setItem(SLUG + '_my_vote', myVote);
+    localStorage.setItem(SLUG + '_poll_votes', JSON.stringify(localVotes));
+    renderPollUI(localVotes);
+
+    if (pollRef) {
+      const data = {};
+      data[`votes.${userId}`] = optId;
+      data.updated_at = serverTimestamp();
+      setDoc(pollRef, data, { merge: true }).catch(() => {});
+    }
+  }
+</script>
+</body>
+</html>
