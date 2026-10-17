@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2027 機關王 GM 基礎組滿分攻略｜8 關科學原理 × 彈力車實戰手冊</title>
+  <title>2027 機關王 GM 基礎組滿分攻略｜8 關立體機關圖解 × 彈力車實戰手冊</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css" />
@@ -28,7 +28,7 @@
       text-transform: none;
     }
     .reveal h1 { font-size: 1.95em; line-height: 1.2; }
-    .reveal h2 { font-size: 1.25em; color: var(--accent2); margin-bottom: 0.45em; }
+    .reveal h2 { font-size: 1.2em; color: var(--accent2); margin-bottom: 0.4em; }
     .reveal h3 { font-size: 0.85em; color: var(--warn); margin-bottom: 0.3em; }
     .reveal .progress { color: var(--accent); height: 5px; }
     .reveal .fragment { opacity: 0.25; transition: opacity 0.3s ease; }
@@ -65,21 +65,7 @@
     .badge-green  { background: rgba(129,199,132,0.2); color: var(--success); border: 1px solid rgba(129,199,132,0.45); }
     .badge-warn   { background: rgba(255,183,77,0.2); color: var(--warn); border: 1px solid rgba(255,183,77,0.45); }
 
-    /* === 統計數字卡 === */
-    .stat-row { display: flex; gap: 14px; justify-content: center; margin-top: 0.5em; }
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 12px;
-      padding: 14px 16px;
-      text-align: center;
-      flex: 1;
-    }
-    .stat-card .num   { font-size: 1.45em; font-weight: 800; color: var(--accent); line-height: 1.1; }
-    .stat-card .label { font-size: 0.38em; color: #e2e8f0; margin-top: 6px; line-height: 1.4; }
-
     /* === 優勢卡（含圖標）=== */
-    .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0.4em; }
     .adv-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 0.4em; }
     .adv-card {
       background: rgba(255,255,255,0.05);
@@ -101,7 +87,7 @@
     .stage-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 0.3em; text-align: left; }
     .stage-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 0.3em; text-align: left; }
     .stage-card {
-      background: rgba(17, 24, 39, 0.82);
+      background: rgba(17, 24, 39, 0.84);
       border: 1px solid rgba(79,195,247,0.28);
       border-radius: 12px;
       padding: 14px 16px;
@@ -113,7 +99,7 @@
       border: 2px solid var(--warn);
       box-shadow: 0 0 18px rgba(255, 183, 77, 0.18);
     }
-    .stage-card h3 { font-size: 0.52em; margin: 0 0 6px 0; color: var(--accent2); display: flex; align-items: center; justify-content: space-between; }
+    .stage-card h3 { font-size: 0.5em; margin: 0 0 6px 0; color: var(--accent2); display: flex; align-items: center; justify-content: space-between; }
     .stage-card ul { font-size: 0.37em; color: #e2e8f0; margin: 0; padding-left: 1.2em; line-height: 1.6; }
     .stage-card ul li { margin-bottom: 4px; }
     .stage-card .ref-img {
@@ -123,6 +109,121 @@
       border-radius: 8px;
       margin-top: 8px;
       border: 1px solid rgba(255,255,255,0.15);
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .stage-card .ref-img:hover { transform: scale(1.02); }
+
+    /* === 單關專屬立體機關圖解版面 (Stage Showcase Layout) === */
+    .iso-showcase {
+      display: grid;
+      grid-template-columns: 1.05fr 1.25fr;
+      gap: 16px;
+      margin-top: 0.2em;
+      text-align: left;
+      align-items: stretch;
+    }
+    .iso-left {
+      background: rgba(17, 24, 39, 0.86);
+      border: 1px solid rgba(79,195,247,0.28);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .iso-left h3 {
+      font-size: 0.48em;
+      color: var(--warn);
+      margin: 0 0 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .iso-left ul {
+      font-size: 0.36em;
+      color: #e2e8f0;
+      margin: 0;
+      padding-left: 1.2em;
+      line-height: 1.58;
+    }
+    .iso-left ul li { margin-bottom: 4px; }
+    .iso-real-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      background: rgba(255,255,255,0.04);
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .iso-real-row img {
+      width: 125px;
+      height: 76px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(79,195,247,0.4);
+      cursor: zoom-in;
+      flex-shrink: 0;
+    }
+    .iso-real-row .real-caption {
+      font-size: 0.32em;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .iso-right {
+      background: radial-gradient(circle at center, rgba(30, 41, 59, 0.95), rgba(13, 17, 23, 0.98));
+      border: 2px solid rgba(79,195,247,0.5);
+      border-radius: 14px;
+      padding: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px rgba(79, 195, 247, 0.15);
+    }
+    .iso-right.task-gold {
+      border-color: var(--warn);
+      box-shadow: 0 0 26px rgba(255, 183, 77, 0.22);
+    }
+    .iso-right .iso-badge-top {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      background: rgba(13, 17, 23, 0.88);
+      border: 1px solid var(--accent2);
+      color: var(--accent2);
+      font-size: 0.32em;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 16px;
+      z-index: 2;
+    }
+    .iso-right .iso-zoom-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      background: rgba(13, 17, 23, 0.85);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #e2e8f0;
+      font-size: 0.28em;
+      padding: 2px 8px;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .iso-right img.iso-main-img {
+      width: 100%;
+      height: 360px;
+      object-fit: contain;
+      border-radius: 10px;
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+    }
+    .iso-right img.iso-main-img:hover {
+      transform: scale(1.02);
     }
 
     /* === 10片大底盤 2x5 地圖 === */
@@ -238,10 +339,47 @@
     .conclusion-card ul { list-style: none; padding: 0; margin: 0; color: #e2e8f0; line-height: 1.65; }
     .conclusion-card ul li::before { content: "✔ "; color: var(--success); font-weight: bold; }
 
+    /* === 點擊放大檢視燈箱 (Lightbox) === */
+    #img-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 15, 0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 24px;
+      cursor: zoom-out;
+      backdrop-filter: blur(6px);
+    }
+    #img-lightbox img {
+      max-width: 92vw;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 2px solid var(--accent2);
+      box-shadow: 0 0 40px rgba(79,195,247,0.35);
+    }
+    #img-lightbox-caption {
+      margin-top: 12px;
+      color: #f8fafc;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+    }
+
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
   </style>
 </head>
 <body>
+
+<!-- 點擊立體圖全螢幕放大檢視燈箱 -->
+<div id="img-lightbox" onclick="this.style.display='none'">
+  <img id="img-lightbox-target" src="" alt="放大檢視">
+  <div id="img-lightbox-caption">點擊任意處關閉放大檢視</div>
+</div>
+
 <div class="reveal">
   <div class="slides">
 
@@ -250,12 +388,12 @@
              data-background-opacity="0.35"
              data-background-size="cover">
       <div class="title-slide">
-        <div class="tag">2027 WORLD GREENMECH · 國小組集訓實戰手冊</div>
-        <h1>2027 機關王 GM 基礎組<br><span style="color:var(--accent2);">8 關科學原理 × 彈力車滿分攻略</span></h1>
-        <h3 style="color:var(--warn); margin-top:0.3em;">整合揚揚老師 23 部《機關王小技巧》× 官方最新競賽規則</h3>
+        <div class="tag">2027 WORLD GREENMECH · 國小組集訓立體圖解手冊</div>
+        <h1>2027 機關王 GM 基礎組<br><span style="color:var(--accent2);">8 關立體機關圖解 × 彈力車滿分攻略</span></h1>
+        <h3 style="color:var(--warn); margin-top:0.3em;">整合揚揚老師 23 部《機關王小技巧》× 逐關 3D 立體組裝透視圖</h3>
         <p class="subtitle">
           8 種不重複科學概念零失誤串聯 ｜ 垂直上升 30cm ＆ 凌空飛越 30cm 穩定解方<br>
-          40T 藍色定位齒輪彈力車 18分 × 3次 = 54分全拿秘笈
+          40T 藍色定位齒輪彈力車 18分 × 3次 = 54分全拿秘笈（點擊任一立體圖皆可全螢幕放大！）
         </p>
         <p class="author">臺中市梧棲區中正國小 STEAM 教師社群 · 選手培訓專用教材</p>
       </div>
@@ -265,7 +403,6 @@
     <section id="slide-wordcloud">
       <h2 style="font-size:1.1em; margin-bottom:0.3em;">💬 選手破冰：看到「8關＋彈力車」，你最想挑戰或最擔心哪個機關？</h2>
       <div style="display:grid; grid-template-columns:270px 1fr; gap:14px; height:450px;">
-        <!-- 左欄：輸入 + 快速標籤 + 排行 -->
         <div style="display:flex; flex-direction:column; gap:8px; text-align:left;">
           <div id="wc-input-card" style="background:rgba(255,255,255,0.06); border-radius:10px; padding:12px; cursor:text;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -280,7 +417,6 @@
               <button id="wc-clear-input" style="position:absolute; right:6px; top:50%; transform:translateY(-50%);
                       background:transparent; border:none; color:#94a3b8; font-size:13px; cursor:pointer; display:none;">✕</button>
             </div>
-            <!-- 快捷點擊詞彙（方便平板學生秒點） -->
             <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:6px;">
               <button class="wc-quick" data-word="彈力車停在+3分區" style="font-size:11px; padding:3px 7px; border-radius:6px; background:rgba(79,195,247,0.16); color:#fff; border:1px solid rgba(79,195,247,0.3); cursor:pointer;">🚗 彈力車停+3分</button>
               <button class="wc-quick" data-word="凌空飛越30cm" style="font-size:11px; padding:3px 7px; border-radius:6px; background:rgba(232,100,58,0.2); color:#fff; border:1px solid rgba(232,100,58,0.4); cursor:pointer;">🚀 凌空飛越30cm</button>
@@ -314,7 +450,6 @@
           </div>
         </div>
 
-        <!-- 右欄：文字雲 -->
         <div style="background:rgba(255,255,255,0.04); border-radius:12px; overflow:hidden;
                     position:relative; border:1px solid rgba(255,255,255,0.08);">
           <canvas id="wc-canvas" style="width:100%; height:100%; display:block;"></canvas>
@@ -379,7 +514,7 @@
           3. <b>空間限制</b>：底面積 <b>150cm × 40cm</b>（10 片大底盤），復歸狀態高 <b>100cm 內不得超出底面積</b>（觸發後展開不限；捲線器可事先綁好繩子）。
         </div>
         <div style="text-align:center;">
-          <img src="images/ref_wgm_pie.jpg" alt="2027官方配分圖" style="height:130px; border-radius:8px; border:1px solid rgba(255,255,255,0.2);">
+          <img class="zoomable" src="images/ref_wgm_pie.jpg" alt="2027官方配分圖" style="height:130px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); cursor:zoom-in;">
         </div>
       </div>
     </section>
@@ -392,7 +527,6 @@
       </p>
 
       <div class="board-map">
-        <!-- 上排 A ~ E -->
         <div class="board-cell">
           <div class="zone-id"><span>A 區</span><span class="stage-tag">第 1 關 (起點)</span></div>
           <div class="cell-title">① 重心或骨牌</div>
@@ -406,7 +540,7 @@
         <div class="board-cell" style="border:2px solid var(--warn);">
           <div class="zone-id"><span>C 區</span><span class="stage-tag" style="background:#d97706;">第 5 關 ★任務二</span></div>
           <div class="cell-title">⑤ 力與加速度/重力</div>
-          <div class="cell-desc">• 承接 G 區上升球<br>• 40cm 陡坡重力加速跳台<br>• <b>凌空飛越 30cm ➔ D 區</b></div>
+          <div class="cell-desc">• 承接 G 區上升球<br>• 45cm 陡坡重力加速跳台<br>• <b>凌空飛越 30cm ➔ D 區</b></div>
         </div>
         <div class="board-cell">
           <div class="zone-id"><span>D 區</span><span class="stage-tag">第 6 關</span></div>
@@ -419,7 +553,6 @@
           <div class="cell-desc">• 高柱綁線懸掛重錘<br>• 繞柱旋轉 270° 順勢下旋掃向 <b>H 區</b></div>
         </div>
 
-        <!-- 下排 目標區 + F G H + 預備區 -->
         <div class="board-cell target-zone">
           <div class="zone-id"><span style="color:#f87171;">🎯 目標區</span><span class="stage-tag" style="background:#dc2626;">正上方淨空</span></div>
           <div class="cell-title">12 根紅棒得分陣</div>
@@ -471,7 +604,7 @@
             <li><b>實戰做法</b>：將<b>中間那一段長條轉 90 度</b>垂直交錯接合！</li>
             <li>不僅前後左右抗搖晃度暴增，<b>少插一格時會直接裝不進去</b>，兼具防呆效果！</li>
           </ul>
-          <img class="ref-img" src="images/ref_p2_beam1.jpg" alt="梁柱轉向90度">
+          <img class="ref-img zoomable" src="images/ref_p2_beam1.jpg" alt="梁柱轉向90度">
         </div>
 
         <div class="stage-card">
@@ -485,7 +618,7 @@
             <li><b>實戰做法</b>：以四根立柱轉向對稱排列，每隔 2 段用短橫梁鎖成<b>雙排 H 型箱型柱</b>。</li>
             <li>四面受力完全對稱，重錘下墜或單擺擺動時<b>紋絲不動</b>！</li>
           </ul>
-          <img class="ref-img" src="images/ref_p2_beam2.jpg" alt="梁柱H型結構">
+          <img class="ref-img zoomable" src="images/ref_p2_beam2.jpg" alt="梁柱H型結構">
         </div>
 
         <div class="stage-card">
@@ -499,7 +632,7 @@
             <li><b>實戰做法</b>：將兩支長桁架<b>一正一側（90° 轉向）並列</b>，頂端與中段用超長條橫向扣合。</li>
             <li>用最少零件就能架出跨越彈力車跑道的<b>18cm 高架天橋</b>！</li>
           </ul>
-          <img class="ref-img" src="images/ref_p2_beam3.jpg" alt="小小工程師支架">
+          <img class="ref-img zoomable" src="images/ref_p2_beam3.jpg" alt="小小工程師支架">
         </div>
       </div>
     </section>
@@ -509,240 +642,303 @@
              data-background-opacity="0.28"
              data-background-size="cover">
       <div class="title-slide">
-        <div class="tag">STAGE 1 TO STAGE 3 · 零失誤開場連動</div>
-        <h1>章節一：前段啟動機構<br><span style="color:var(--accent2);">A 區骨牌 ➔ B 區單擺 ➔ F 區天橋槓桿</span></h1>
+        <div class="tag">STAGE 1 TO STAGE 3 · 逐關 3D 立體組裝圖解</div>
+        <h1>章節一：前段啟動機構<br><span style="color:var(--accent2);">第 1 關（骨牌）➔ 第 2 關（單擺）➔ 第 3 關（槓桿）</span></h1>
         <p class="subtitle">
           流暢度 20 分的第一道防線：<br>
-          運用「小紅栓記憶點」、「A 字高架單擺」與「第一類蹺蹺板槓桿」穩定傳遞力量
+          看懂每一關的「3D 立體結構圖」與「揚揚老師實拍示範」，照著組裝零失誤！
         </p>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 7: 第1關(骨牌) & 第2關(單擺) ==================== -->
+    <!-- ==================== SLIDE 7: 第1關 立體機關圖解 ==================== -->
     <section>
-      <h2>🧱 第 1 關（A區）重心或骨牌 ＆ 第 2 關（B區）單擺</h2>
-      <div class="stage-grid-2">
-        <div class="stage-card">
-          <h3>
-            <span>第 1 關（A區）：重心或骨牌</span>
-            <span class="badge badge-cyan">科學概念 #1</span>
-          </h3>
-          <ul>
-            <li><b>痛點解決</b>：比賽現場重置 3 次時，骨牌常擺歪或不小心往後碰倒！</li>
-            <li><b>揚揚老師 3 大秘訣（《骨牌位置記憶點》）</b>：
-              <ol>
-                <li><b>小紅栓定位點</b>：在底盤孔位插上<b>紅色單凸栓</b>當擋點，每次復歸只要把骨牌靠齊紅栓，間距 100% 一模一樣！</li>
-                <li><b>L 型單向底座</b>：骨牌底部加上短長條做成「<b>L 型腳</b>」，往後推完全不會倒，只會精準往前倒！</li>
-                <li><b>尾端漸進加大</b>：最後兩張骨牌加高加寬，倍增撞擊力道推開 B 區單擺插銷。</li>
-              </ol>
-            </li>
-            <li>⚠️ <b>邊界注意</b>：A 區下方即為目標區，骨牌倒下後<b>絕對不可超出 A 區下緣投影線</b>！</li>
-          </ul>
-          <img class="ref-img" src="images/ref_p2_domino.jpg" alt="骨牌位置記憶點與L型底座">
+      <h2>🧱 第 1 關（A區）立體圖解：【重心或骨牌】位置記憶點與 L 型底座</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 組裝零件與步驟拆解</span>
+              <span class="badge badge-cyan">科學概念 #1 · 保底：慣性定律</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-K2W</code> *C-5孔長條II-白 ×5、<code>7026-W10-Q2W</code> *C-3孔長條II-白 ×5、<code>7061-W10-C1R</code> *C-長結合鍵-紅 ×5、<code>7413-W10-I1W</code> *C-5×10孔長方框II-白 ×1。</li>
+              <li><b>Step 1（L型單向防呆腳）</b>：在每支 <code>5孔長條II-白</code> 底部前端扣上 <code>3孔長條II-白</code> 成<b>「L 型」</b>——往後碰絕對不會倒，只能往前傾倒！</li>
+              <li><b>Step 2（長結合鍵-紅記憶定位）</b>：在 <code>7125-W10-B1S</code> 20×30大底盤每隔 4 格插一顆<b>長結合鍵-紅</b>，復歸時骨牌背部貼緊紅鍵，3 秒排好且間距 100% 一致！</li>
+              <li><b>Step 3（尾端雙倍重長方框骨牌）</b>：最後一張骨牌改用 <code>5×10孔長方框II-白</code>，質量與重心加倍，直接撞開 B 區單擺插銷！</li>
+              <li>⚠️ <b>紅線檢查</b>：A 區正下方是目標區，骨牌千萬不可靠近底盤前緣，避免倒下時超出 A 區邊界！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p2_domino.jpg" alt="揚揚老師骨牌示範">
+            <div class="real-caption">
+              <b style="color:var(--accent2);">📺 播放清單實拍對照（《骨牌位置記憶點》）</b><br>
+              注意看底盤上的紅色小圓點與骨牌底部的 L 型轉角，這就是比賽現場 3 次重置都不失誤的秘密武器！
+            </div>
+          </div>
         </div>
 
-        <div class="stage-card">
-          <h3>
-            <span>第 2 關（B區）：單擺</span>
-            <span class="badge badge-orange">科學概念 #2</span>
-          </h3>
-          <ul>
-            <li><b>科學原理</b>：懸吊重錘受重力位能與動能週期轉換，沿固定圓弧軌跡擺動撞擊。</li>
-            <li><b>揚揚老師組裝技巧（《小技巧 8 單擺》）</b>：
-              <ol>
-                <li><b>雙柱門型懸吊架</b>：在 B 區搭設 30cm 高門型架，頂端橫軸穿過長條作為擺臂（比棉線更不會左右亂飄！）。</li>
-                <li><b>擺錘配重</b>：擺臂末端安裝 <b>2 顆 60T 黃色大齒輪</b>增加轉動慣量。</li>
-                <li><b>跨排精準打擊</b>：第 1 關尾端骨牌撞開水平支撐栓 ➔ 擺錘向下擺動，直接撞擊正下方 <b>F 區天橋上的槓桿受擊板</b>！</li>
-              </ol>
-            </li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_pendulum.jpg" alt="單擺機構示範">
+        <div class="iso-right">
+          <div class="iso-badge-top">🧊 第 1 關 3D 立體組裝＋智高零件圖鑑（點擊放大）</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage1_domino.png" alt="第1關骨牌3D立體機關與智高零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 8: 第3關(槓桿) ==================== -->
+    <!-- ==================== SLIDE 8: 第2關 立體機關圖解 ==================== -->
     <section>
-      <h2>⚖️ 第 3 關（F區架高天橋）：槓桿原理與跨區連動</h2>
-      <div class="stage-grid-2">
-        <div class="stage-card">
-          <h3>
-            <span>第 3 關（F區天橋）：槓桿</span>
-            <span class="badge badge-green">科學概念 #3</span>
-          </h3>
-          <ul>
-            <li><b>三類槓桿靈活選用（《小技巧 11 槓桿》）</b>：
-              <ul>
-                <li><b>第一類槓桿（支點在中）</b>：如蹺蹺板、剪刀式伸縮連桿，改變施力方向最直覺！</li>
-                <li><b>第二類槓桿（抗力點在中）</b>：施力臂＞抗力臂，適合需要<b>大力量拔開緊卡榫</b>的場合。</li>
-                <li><b>第三類槓桿（施力點在中）</b>：費力但<b>省時、移動距離放大</b>。</li>
-              </ul>
-            </li>
-            <li><b>本關實戰配置（F 區離地 18cm 天橋上）</b>：
-              <ul>
-                <li>採用<b>第一類蹺蹺板槓桿 ＋ 剪刀連桿</b>：B 區單擺由上往下砸中左端受擊盤 ➔ 右端立刻向上翹起 ➔ 拉動連桿直接<b>向上拔開隔壁 G 區棘輪的止動爪</b>！</li>
-              </ul>
-            </li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_lever.jpg" alt="槓桿原理示範">
+      <h2>⏱️ 第 2 關（B區）立體圖解：【單擺】A 字雙柱高架與雙齒輪重錘</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 組裝零件與步驟拆解</span>
+              <span class="badge badge-orange">科學概念 #2 · 保底：重力位能</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-Z1W</code> *C-15孔超長條-白 ×4、<code>7413-W10-P1W</code> *C-11孔長條-白 ×1、<code>7026-W10-W5Y</code> *C-60T齒輪-黃 ×2、<code>7413-W10-L1D</code> *C-100mmⅢ軸-黑 ×2、<code>3620-W10-A1D</code> *C-軸固定鍵-黑 ×4。</li>
+              <li><b>Step 1（雙柱門型穩固高架）</b>：以 <code>15孔超長條-白</code> 在 B 區搭設 32cm 高門型架（中段轉向 90° 交錯防晃），頂端穿入 <code>100mmⅢ軸-黑</code>。</li>
+              <li><b>Step 2（剛性擺臂取代軟棉線）</b>：用 <code>11孔長條-白</code> 當剛性連桿擺臂（不偏擺！），底部用黑軸與 <code>軸固定鍵-黑</code> 對稱夾緊 <b>2 顆 60T齒輪-黃</b> 當重錘。</li>
+              <li><b>Step 3（跨排向下打擊）</b>：第 1 關長方框骨牌撞開插銷後，雙 60T 黃齒輪重錘沿圓弧向下高速擺動，精準砸中正下方 <b>F 區天橋的槓桿受擊墊</b>！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_pendulum.jpg" alt="揚揚老師單擺示範">
+            <div class="real-caption">
+              <b style="color:var(--accent2);">📺 播放清單實拍對照（《小技巧 8 單擺》）</b><br>
+              揚揚老師示範：擺錘配重越集中於底部（雙黃色大齒輪），圓弧擺動的撞擊力道越穩定！
+            </div>
+          </div>
         </div>
 
-        <div class="stage-card" style="justify-content:flex-start; gap:10px;">
-          <h3>
-            <span>🔍 F 區「雙層天橋」淨空檢核規格</span>
-            <span class="badge badge-warn">避坑重點</span>
-          </h3>
-          <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:12px; font-size:0.36em; line-height:1.65; color:#e2e8f0;">
-            <p style="margin:0 0 6px 0; color:var(--accent2); font-weight:700;">為什麼第 3 關要架高在 F 區上空？</p>
-            1. 規則允許 <b>F、G、H 區正投影上方有關卡物件</b>（只有目標區正上方禁放）。<br>
-            2. 但彈力車從預備區出發後，<b>車輪必須沿 H ➔ G ➔ F 底盤前進，且車體其他部分不得碰觸任何物件（否則扣 3 分）</b>。<br>
-            3. <b>標準尺寸</b>：<br>
-            　• 天橋立柱緊貼 F 區底盤<b>最前緣與最後緣第 1 排孔位</b>。<br>
-            　• 中央留出 <b>寬度 ≥ 28cm、高度 ≥ 18cm</b> 的「黃金隧道」。<br>
-            　• 槓桿翹起與復歸的所有連桿皆在 18cm 以上運作，與底層彈力車 <b>100% 零干擾</b>！
-          </div>
-          <div class="tip-box" style="margin-top:0;">
-            💡 <b>組裝小撇步</b>：在槓桿支點處加上<b>黑色軸扣與墊片</b>減少側向摩擦，受擊盤面積做大（5×5格），確保單擺百發百中！
-          </div>
+        <div class="iso-right">
+          <div class="iso-badge-top">🧊 第 2 關 3D 立體組裝＋智高零件圖鑑（點擊放大）</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage2_pendulum.png" alt="第2關單擺3D立體機關與智高零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 9: 章節二封面 [BG] ==================== -->
+    <!-- ==================== SLIDE 9: 第3關 立體機關圖解 ==================== -->
+    <section>
+      <h2>⚖️ 第 3 關（F區天橋）立體圖解：【槓桿】18cm 雙層天橋與蹺蹺板連桿</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 組裝零件與步驟拆解</span>
+              <span class="badge badge-green">科學概念 #3 · 保底：連桿</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-J1W</code> *C-5×15孔長方框-白 ×2、<code>7413-W10-P1W</code> *C-11孔長條-白 ×2、<code>7413-W10-K2W</code> *C-5孔長條II-白 ×4、<code>7026-W10-H1R</code> *C-自轉軸鍵-紅 ×6、<code>7026-W10-I1SK</code> *C-底盤結合器-灰 ×8。</li>
+              <li><b>Step 1（架設 18cm 淨空天橋）</b>：用 <code>底盤結合器-灰</code> 將 <code>5×15孔長方框-白</code> 鎖在 F 區底盤前後邊緣，底層中央留出 <b>20cm 寬彈力車淨空隧道</b>！</li>
+              <li><b>Step 2（第一類蹺蹺板槓桿）</b>：在天橋二樓中央立起支點座，以 <code>自轉軸鍵-紅</code> 裝上 <code>11孔長條-白</code> 作為一類槓桿橫梁。</li>
+              <li><b>Step 3（下壓轉上拉剪刀連桿）</b>：B 區單擺砸中左端 ➔ 槓桿右端向上翹起並帶動 <code>5孔長條II-白</code> 剪刀連桿 ➔ 拔開隔壁 <b>G 區棘輪的止逆爪</b>！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_lever.jpg" alt="揚揚老師槓桿示範">
+            <div class="real-caption">
+              <b style="color:var(--accent2);">📺 播放清單實拍對照（《小技巧 11 槓桿》）</b><br>
+              利用第一類槓桿（支點在中）將單擺「向下的衝擊力」瞬間轉換為「向上拔開棘輪卡榫的拉力」！
+            </div>
+          </div>
+        </div>
+
+        <div class="iso-right">
+          <div class="iso-badge-top">🧊 第 3 關 3D 立體組裝＋智高零件圖鑑（點擊放大）</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage3_lever.png" alt="第3關槓桿天橋3D立體機關與智高零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: 章節二封面 [BG] ==================== -->
     <section data-background-image="images/sec2_tasks.png"
              data-background-opacity="0.28"
              data-background-size="cover">
       <div class="title-slide">
-        <div class="tag">STAGE 4 TO STAGE 5 · 關卡任務 10 分全拿</div>
-        <h1>章節二：攻克兩大指定關卡任務<br><span style="color:var(--warn);">垂直上升 30cm（5分）× 凌空飛越 30cm（5分）</span></h1>
+        <div class="tag">STAGE 4 TO STAGE 8 · 兩大極限任務 × 收尾觸發</div>
+        <h1>章節二：攻克關卡任務與後段連動<br><span style="color:var(--warn);">垂直上升 30cm（5分）× 凌空飛越 30cm（5分）</span></h1>
         <p class="subtitle">
-          捨棄高失誤率的複雜連桿，採用國小組最穩定的<br>
-          「<b>G 區棘輪配重捲線電梯</b>」與「<b>C➔D 高架重力位能加速跳台</b>」
+          第 4 關（棘輪捲線電梯）➔ 第 5 關（重力加速跳台）➔ 第 6～8 關（護欄軌道、向心力圓周、反作用力推桿）<br>
+          逐關 3D 立體機關結構完整拆解！
         </p>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 10: 第4關(棘輪 + 垂直上升30cm) ==================== -->
+    <!-- ==================== SLIDE 11: 第4關 立體機關圖解 ==================== -->
     <section>
-      <h2>🛗 第 4 關（G區天橋）：【棘輪】× 任務一「小球垂直上升 30cm」</h2>
-      <div class="stage-grid-2">
-        <div class="stage-card task-highlight">
-          <h3>
-            <span>第 4 關（G區）：棘輪配重捲線電梯</span>
-            <span class="badge badge-warn">科學概念 #4 ＋ 任務一 (5分)</span>
-          </h3>
-          <ul>
-            <li><b>任務條件</b>：小球須<b>垂直上升 30 公分</b>後，成功觸發下一個動作（5 分）。</li>
-            <li><b>揚揚老師機構拆解（《小技巧 10 棘輪》）</b>：
-              <ol>
-                <li><b>頂端同軸捲線器＋棘輪</b>：在 G 區與 C 區交界立起 <b>48cm 高雙排 H 型塔柱</b>，頂端橫軸同軸固定「棘輪齒輪」與「雙捲線器」。</li>
-                <li><b>棘輪單向鎖定重錘</b>：左繩懸掛<b>重錘盒</b>（裝 4~5 顆鋼珠/重物）於 45cm 高處；右繩連接底部的<b>垂直滑軌托球架</b>。用長條止動爪卡住棘輪齒，平時完全鎖死不滑脫！</li>
-                <li><b>瞬間解鎖垂直拉升</b>：第 3 關槓桿撥開止動爪 ➔ 重錘垂直下墜拉動捲線軸 ➔ 托球架沿雙滑軌將小球<b>垂直拉升 35cm（超越 30cm 標準！）</b>直達塔頂！</li>
-              </ol>
-            </li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_ratchet.jpg" alt="棘輪綁重物捲線機構">
+      <h2>🛗 第 4 關（G區天橋）立體圖解：【棘輪】× 任務一「小球垂直上升 30cm」</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 棘輪配重捲線電梯組裝步驟</span>
+              <span class="badge badge-warn">科學概念 #4 ＋ 任務一 (5分)</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-Z1W</code> *C-15孔超長條-白 ×6、<code>7900-W10-H1SK</code> *C-捲線器-灰 ×1、<code>7344-W10-O1Y</code> *C-OD53mm滑輪-黃 ×2、<code>7026-W10-D2R</code> *C-20T齒輪-紅 ×1、<code>7330-W11-M1B</code> *A-40mm圓球-藍 ×1。</li>
+              <li><b>Step 1（頂端同軸棘輪＋捲線器＋定滑輪）</b>：在 <code>15孔超長條-白</code> 組成的 H 型高塔頂端橫軸上，將 <code>20T齒輪-紅</code>（棘輪）、<code>捲線器-灰</code> 與 <code>OD53mm滑輪-黃</code> 同軸裝設。</li>
+              <li><b>Step 2（左掛重錘、右拉載球電梯）</b>：左側懸掛高密度配重盒，以 3孔長條當止逆棘爪卡住 20T 紅齒輪；右側細繩連接底部的雙軌托球架與 <code>40mm圓球-藍</code>。</li>
+              <li><b>Step 3（解鎖垂直拉升 30cm）</b>：第 3 關槓桿撥開止逆爪 ➔ 配重盒垂直下墜帶動捲線器 ➔ 托球架沿雙滑軌將 <code>40mm圓球-藍</code> <b>垂直拉升 30cm（完全符合 ≥20cm 任務規定！）</b>，至塔頂滾入 C 區跳台！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_ratchet.jpg" alt="揚揚老師棘輪捲線示範">
+            <div class="real-caption">
+              <b style="color:var(--warn);">📺 播放清單實拍對照（《小技巧 10 棘輪》）</b><br>
+              揚揚老師親授：捲線器綁重物搭配棘輪卡榫，只要輕輕撥開止動爪就能瞬間釋放強大垂直拉力！
+            </div>
+          </div>
         </div>
 
-        <div class="stage-card" style="justify-content:space-between;">
-          <h3>
-            <span>⚙️ 垂直上升 30cm 穩定度調校細節</span>
-            <span class="badge badge-cyan">滿分關鍵</span>
-          </h3>
-          <ul style="font-size:0.36em;">
-            <li><b>規則紅利善用</b>：導讀影片明定「<b>捲線器可事先綁好繩子</b>」！賽前先將棉線長度精確綁在 35cm 行程處，現場組裝省時又精準。</li>
-            <li><b>防卡死雙導軌</b>：托球架兩側必須套在兩根垂直光滑長條（或圓管）上滑動，避免上升途中旋轉卡住。</li>
-            <li><b>頂端自動卸球</b>：托球架底板做成微傾 10°，當上升至 35cm 頂端撞到擋塊時，小球自動滾出托架，直接進入 <b>C 區高塔跳台</b>！</li>
-            <li><b>替代方案補充（《軌道 2》）</b>：播放清單亦介紹「連桿階梯上升軌道」，但需多段推桿同步；國小組實戰強烈首推「<b>棘輪配重捲線電梯</b>」，成功率近 100%！</li>
-          </ul>
-          <img class="ref-img" src="images/ref_p2_track2.jpg" alt="連桿上升軌道機構對照">
+        <div class="iso-right task-gold">
+          <div class="iso-badge-top" style="border-color:var(--warn); color:var(--warn);">★ 關卡任務一（5分）：第 4 關 3D 立體組裝＋零件圖鑑</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage4_ratchet_lift.png" alt="第4關棘輪垂直上升30cm立體機關與零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 11: 第5關(力與加速度/重力位能 + 凌空飛越30cm) ==================== -->
+    <!-- ==================== SLIDE 12: 第5關 立體機關圖解 ==================== -->
     <section>
-      <h2>🚀 第 5 關（C➔D區）：【力與加速度或重力位能】× 任務二「凌空飛越 30cm」</h2>
-      <div class="stage-grid-2">
-        <div class="stage-card task-highlight">
-          <h3>
-            <span>第 5 關（C區）：高架重力加速斜坡跳台</span>
-            <span class="badge badge-warn">科學概念 #5 ＋ 任務二 (5分)</span>
-          </h3>
-          <ul>
-            <li><b>任務條件</b>：小球須<b>凌空飛越水平距離 30 公分</b>後，觸發下一個動作（5 分）。</li>
-            <li><b>物理原理</b>：利用高處重力位能 <code>U = mgh</code> 轉化為動能 <code>K = ½mv²</code>，在斜坡產生穩定加速度衝出跳台。</li>
-            <li><b>揚揚老師組裝技巧（《小技巧 5 重力位能》＆《軌道 1》）</b>：
-              <ol>
-                <li><b>45cm 高位差俯衝軌道</b>：承接第 4 關送上塔頂的小球（選用實心重塑膠球或玻璃珠，抗風阻最佳），沿 C 區 45° 雙圓管陡坡俯衝而下。</li>
-                <li><b>三孔長條微調起跳仰角</b>：在跳台出口處（高約 22cm）利用「<b>三孔長條</b>」微調斜率，將起跳仰角鎖定在 <b>15°～20°</b>。</li>
-                <li><b>實測 32cm 水平淨空</b>：從 C 區跳台端點到 D 區接球漏斗前緣，用尺量測水平距離設為 <b>32cm</b>（預留 2cm 安全裕度，裁判一眼認可！）。</li>
-              </ol>
-            </li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_gravity.jpg" alt="重力位能與斜坡加速">
+      <h2>🚀 第 5 關（C➔D區）立體圖解：【力與加速度/重力位能】× 任務二「凌空飛越 30cm」</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 高架重力加速斜坡跳台組裝步驟</span>
+              <span class="badge badge-warn">科學概念 #5 ＋ 任務二 (5分)</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7330-W11-K1Y</code> *A-6孔直線軌道-黃 ×2、<code>7330-W11-N1Y</code> *A-3孔斜坡軌道-黃 ×1、<code>7026-W10-Q2W</code> *C-3孔長條II-白 ×2、<code>7413-W10-I1W</code> *C-5×10孔長方框II-白 ×2、<code>7330-W11-M1B</code> *A-40mm圓球-藍 ×1。</li>
+              <li><b>Step 1（30cm 高位差俯衝斜坡）</b>：在 C 區高塔架設 <code>6孔直線軌道-黃</code> 陡坡，將重力位能 <code>U = mgh</code> 全數轉為高速動能。</li>
+              <li><b>Step 2（3孔長條三角斜撐鎖死 18° 仰角）</b>：運用《軌道 1》技巧，跳台末端接 <code>3孔斜坡軌道-黃</code> 並用 <code>3孔長條II-白</code> 墊高鎖死 <b>18° 發射仰角</b>。</li>
+              <li><b>Step 3（飛越 28cm 水平淨空）</b>：<code>40mm圓球-藍</code> 高速飛出跳台，在空中劃出拋物線<b>無支撐飛越 28cm 水平跨距（超越 ≥20cm 規定）</b>，落入 D 區由 <code>5×10孔長方框II-白</code> 圍成的寬口接球籃！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_gravity.jpg" alt="揚揚老師重力位能與斜坡示範">
+            <div class="real-caption">
+              <b style="color:var(--warn);">📺 播放清單實拍對照（《小技巧 5 重力位能》＆《軌道 1》）</b><br>
+              高低落差越大加速度越快；搭配三孔長條微調起跳角度，不用橡皮筋也能百發百中飛越 30 公分！
+            </div>
+          </div>
         </div>
 
-        <div class="stage-card">
-          <h3>
-            <span>🛠️ 軌道不斷裂與接球漏斗防彈出秘訣</span>
-            <span class="badge badge-green">軌道 1 技巧</span>
-          </h3>
-          <ul style="font-size:0.36em;">
-            <li><b>跨接轉軸防斷裂（《軌道組裝小技巧 1》）</b>：
-              <ul>
-                <li>斜坡軌道千萬不可硬壓固定在死孔位上（會產生公差導致長條彎曲裂開、球滾偏）。</li>
-                <li><b>正確做法</b>：高低兩端支柱只穿過<b>單顆紅栓當旋轉軸心</b>，讓軌道自然斜跨在兩柱之間，再用三孔長條鎖定角度！</li>
-              </ul>
-            </li>
-            <li><b>D 區「寬口消能接球漏斗」設計</b>：
-              <ul>
-                <li>小球飛越 32cm 後衝力極大，D 區入口須搭設 <b>10×10 格寬口漏斗</b>，後壁加裝<b>懸吊擺片（或鬆動擋板）</b>吸收動能，讓球乖乖落入第 6 關軌道！</li>
-              </ul>
-            </li>
-          </ul>
-          <img class="ref-img" src="images/ref_p2_track1.jpg" alt="軌道組裝小技巧">
+        <div class="iso-right task-gold">
+          <div class="iso-badge-top" style="border-color:var(--warn); color:var(--warn);">★ 關卡任務二（5分）：第 5 關 3D 立體組裝＋零件圖鑑</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage5_gravity_jump.png" alt="第5關重力加速斜坡凌空飛越30cm立體機關與零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 12: 第6~8關(軌道、向心力圓周、作用力與反作用力) ==================== -->
+    <!-- ==================== SLIDE 13: 第6關 立體機關圖解 ==================== -->
     <section>
-      <h2>🌀 後段收尾（第 6～8 關：D ➔ E ➔ H）：穩定導引並自動觸發彈力車</h2>
-      <div class="stage-grid-3">
-        <div class="stage-card">
-          <h3><span>第 6 關（D區）：軌道</span><span class="badge badge-cyan">科學概念 #6</span></h3>
-          <ul>
-            <li><b>解答篇第 2 題必考技巧</b>：軌道上如何避免彈珠或球彈出？答案就是加裝<b>「隔板 / 護欄」</b>！</li>
-            <li><b>實戰做法</b>：在雙平行長條軌道兩側，每隔 5 格向上加裝一層側邊護欄長條。</li>
-            <li>將飛越落下的小球穩定導引通過 D 區，撞開 E 區高柱頂端的擋桿。</li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_track.jpg" alt="軌道加裝護欄">
+      <h2>🛤️ 第 6 關（D區）立體圖解：【軌道】雙側加高護欄／隔板防跳球機構</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 護欄軌道組裝步驟與防掉球秘訣</span>
+              <span class="badge badge-cyan">科學概念 #6 · 保底：摩擦力</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-Z1W</code> *C-15孔超長條-白 ×2、<code>7413-W10-P1W</code> *C-11孔長條-白 ×2、<code>7331-W10-H1P</code> *A-直線軌道擋板-紫 ×2、<code>7413-W10-K2W</code> *C-5孔長條II-白 ×4、<code>7061-W10-C1R</code> *C-長結合鍵-紅 ×8。</li>
+              <li><b>Step 1（銜接 D 區漏斗出口）</b>：在 D 區接球漏斗下方出口處，以 <code>5孔長條II-白</code> 做高低差支撐柱，平行鋪設 2 支 <code>15孔超長條-白</code> 雙軌滑道。</li>
+              <li><b>Step 2（必裝雙側「隔板／護欄」）</b>：揚揚老師《解答篇》第 2 題重點——用 <code>長結合鍵-紅</code> 在滑道左右兩側加高一層 <code>11孔長條-白</code> 與 <code>直線軌道擋板-紫</code>！</li>
+              <li><b>Step 3（穩定導引觸發 E 區）</b>：雙邊護欄能 100% 防止圓球跳出軌道（避免被扣流暢度 2 分），並順暢滾入 E 區高柱平台撞落旋轉重錘！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_track.jpg" alt="揚揚老師軌道示範">
+            <div class="real-caption">
+              <b style="color:var(--accent2);">📺 播放清單實拍對照（《小技巧 2 軌道》＆《解答時間》）</b><br>
+              雙軌間距須略小於球徑，加上兩側高護欄後，即使球速再快也絕不脫軌！
+            </div>
+          </div>
         </div>
 
-        <div class="stage-card">
-          <h3><span>第 7 關（E區）：向心力及圓周運動</span><span class="badge badge-orange">科學概念 #7</span></h3>
-          <ul>
-            <li><b>揚揚老師點名最適合轉向收尾的機構（《小技巧 4》）</b>！</li>
-            <li><b>實戰做法</b>：在 E 區立一根 35cm 單柱，頂端綁棉線懸吊一顆 60T 黃色齒輪重物並停在平放高台上。</li>
-            <li>第 6 關小球撞落齒輪後，齒輪受繩子<b>向心力牽引繞著柱子做圓周旋轉而下</b>，精準轉向掃入下方 H 區！</li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_centripetal.jpg" alt="向心力及圓周運動">
-        </div>
-
-        <div class="stage-card">
-          <h3><span>第 8 關（H區）：作用力與反作用力</span><span class="badge badge-green">科學概念 #8 (終點)</span></h3>
-          <ul>
-            <li><b>自動觸發預備區（《小技巧 7》）</b>：H 區後側架設雙向碰撞滑動推桿（底層仍維持淨空跑道）。</li>
-            <li>E 區圓周旋轉重錘撞擊推桿左端 ➔ 推桿受碰撞力與反作用力向右滑出，直接<b>壓下預備區彈力車的棘輪釋放桿</b>！</li>
-            <li>達成<b>「第 8 關自動觸發車體啟動」穩拿 2 分</b>！</li>
-          </ul>
-          <img class="ref-img" src="images/ref_p1_action.jpg" alt="作用力與反作用力">
+        <div class="iso-right">
+          <div class="iso-badge-top">🧊 第 6 關 3D 立體組裝＋智高零件圖鑑（點擊放大）</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage6_track_guard.png" alt="第6關護欄軌道3D立體機關與零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 13: 科學概念參照表雙重填報秘訣 ==================== -->
+    <!-- ==================== SLIDE 14: 第7關 立體機關圖解 ==================== -->
+    <section>
+      <h2>🌀 第 7 關（E區）立體圖解：【向心力及圓周運動】繞柱旋轉下擊機構</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 向心力繞柱旋轉機構組裝步驟</span>
+              <span class="badge badge-orange">科學概念 #7 · 保底：重力位能</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-Z1W</code> *C-15孔超長條-白 ×2、<code>7026-W10-W5Y</code> *C-60T齒輪-黃 ×1、<code>7410-W10-B1S</code> *C-繩索固定鍵 ×2、<code>7026-W10-Q2W</code> *C-3孔長條II-白 ×2、<code>7125-W10-A1SK</code> *C-8×12底盤-灰 ×1。</li>
+              <li><b>Step 1（頂端繩索固定鍵懸吊重物）</b>：在 E 區中央以 <code>15孔超長條-白</code> 立起 35cm 獨立單柱，頂端用 <code>繩索固定鍵</code> 綁牢細繩並懸掛 <code>60T齒輪-黃</code>，擱置於 <code>3孔長條II-白</code> 高處停駐台。</li>
+              <li><b>Step 2（撞落產生向心圓周運動）</b>：第 6 關圓球滾來將 <code>60T齒輪-黃</code> 推落停駐台 ➔ 齒輪受繩索向心力牽引，<b>繞著中心單柱做螺旋圓周運動旋轉而下</b>！</li>
+              <li><b>Step 3（270° 跨區轉向神技）</b>：自然旋轉改變動量方向，在底部精準掃中正下方 <b>H 區的碰撞滑桿</b>！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_centripetal.jpg" alt="揚揚老師向心力圓周運動示範">
+            <div class="real-caption">
+              <b style="color:var(--accent2);">📺 播放清單實拍對照（《小技巧 4 向心力及圓周運動》）</b><br>
+              結構極簡卻極具視覺觀賞性，且在科學概念表上屬於獨一無二的亮點項目！
+            </div>
+          </div>
+        </div>
+
+        <div class="iso-right">
+          <div class="iso-badge-top">🧊 第 7 關 3D 立體組裝＋智高零件圖鑑（點擊放大）</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage7_centripetal.png" alt="第7關向心力圓周運動3D立體機關與零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 15: 第8關 立體機關圖解 ==================== -->
+    <section>
+      <h2>💥 第 8 關（H區後側）立體圖解：【作用力與反作用力】碰撞推桿自動發車</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 雙向碰撞滑桿組裝與自動觸發步驟</span>
+              <span class="badge badge-green">科學概念 #8 (終點) · 自動觸發 +2分</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄零件（品號／品名）</b>：<code>7413-W10-P1W</code> *C-11孔長條-白 ×2、<code>7413-W10-K2W</code> *C-5孔長條II-白 ×4、<code>7026-W10-D2R</code> *C-20T齒輪-紅 ×2、<code>7026-W10-H1R</code> *C-自轉軸鍵-紅 ×4、<code>7061-W10-C1R</code> *C-長結合鍵-紅 ×4。</li>
+              <li><b>Step 1（H 區後側低摩擦滾輪滑槽）</b>：在 H 區後側（避開底盤前側彈力車跑道）架設導軌框，下方裝 2 顆 <code>20T齒輪-紅</code> 當滾輪，上方承載 <code>11孔長條-白</code> 水平滑動推桿。</li>
+              <li><b>Step 2（作用力與反作用力傳遞）</b>：當 E 區 60T 旋轉重錘撞擊滑桿左端時，正向碰撞力與反作用力推動 <code>11孔長條-白</code> 瞬間向右滑出！</li>
+              <li><b>Step 3（壓下預備區彈力車解鎖卡榫）</b>：推桿右端直接敲下由 <code>5孔長條II-白</code> 與 <code>自轉軸鍵-紅</code> 組成的車尾解鎖卡榫——<b>完美達成「第 8 關自動觸發車體啟動（+2分）」</b>！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p1_action.jpg" alt="揚揚老師作用力與反作用力示範">
+            <div class="real-caption">
+              <b style="color:var(--accent2);">📺 播放清單實拍對照（《小技巧 7 作用力與反作用力》）</b><br>
+              透過碰撞動量轉移與反推機構，讓第 8 關與彈力車之間達成乾淨俐落的機械觸發！
+            </div>
+          </div>
+        </div>
+
+        <div class="iso-right">
+          <div class="iso-badge-top">🧊 第 8 關 3D 立體組裝＋智高零件圖鑑（點擊放大）</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage8_action_trigger.png" alt="第8關作用力與反作用力3D立體機關與零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 16: 科學概念參照表雙重填報秘訣 ==================== -->
     <section>
       <h2>📋 揚揚老師私房秘訣：《科學概念參照表》雙重填報保底策略</h2>
       <div style="display:grid; grid-template-columns: 1.45fr 1fr; gap:14px; align-items:start;">
@@ -816,12 +1012,12 @@
             2. 揚揚老師提醒：<b>「10 個機關裡有 8、9 個都有慣性定律與摩擦力！」</b><br>
             3. 因此<b>千萬別把「慣性定律、摩擦力、輪軸」先浪費在前面</b>，而是每關先填明確的專屬機構（骨牌、單擺、槓桿、棘輪、軌道、圓周運動），再把<b>「慣性定律、摩擦力、連桿、輪軸」填作每關的第 2 個保底概念</b>！就算某關主概念被裁判嚴格審視，也能立刻由第 2 概念無縫遞補拿滿 16 分！
           </div>
-          <img src="images/ref_p1_table.jpg" alt="科學概念及機械結構參照表" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-top:8px; border:1px solid rgba(255,255,255,0.2);">
+          <img class="zoomable" src="images/ref_p1_table.jpg" alt="科學概念及機械結構參照表" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-top:8px; border:1px solid rgba(255,255,255,0.2); cursor:zoom-in;">
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 14: 指定任務核心(54分) [ICON] ==================== -->
+    <!-- ==================== SLIDE 17: 指定任務核心(54分) [ICON] ==================== -->
     <section>
       <h2>🎯 指定任務（54分）：彈力車與自製目標區硬性規範</h2>
       <div class="stage-grid-2">
@@ -835,7 +1031,7 @@
             <li><b>高度與淨空</b>：紅棒安裝高度可自訂，但<b>目標區正投影上方不得有任何其他機關物件</b>（F、G、H 及預備區則不在此限）。</li>
             <li><b>關鍵陷阱</b>：規則寫「紅棒被小車碰撞掉落或位移不會被扣分」，但後面又規定「<b>車體觸發移動後不得觸碰到其他任何物件，否則無法獲得未觸碰分數 3 分</b>」！因此<b>絕對不能碰到紅棒</b>！</li>
           </ul>
-          <img class="ref-img" src="images/ref_wgm_target.jpg" alt="自製目標區規範">
+          <img class="ref-img zoomable" src="images/ref_wgm_target.jpg" alt="自製目標區規範">
         </div>
 
         <div class="stage-card">
@@ -858,51 +1054,83 @@
               </ol>
             </li>
           </ul>
-          <img class="ref-img" src="images/ref_wgm_car40t.jpg" alt="40T定位齒輪彈力車">
+          <img class="ref-img zoomable" src="images/ref_wgm_car40t.jpg" alt="40T定位齒輪彈力車">
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 15: 彈力車滿分結構拆解 ==================== -->
+    <!-- ==================== SLIDE 18: 指定任務 彈力車 3D 立體機關圖解 ==================== -->
     <section>
-      <h2>🏎️ 彈力車滿分結構拆解：彈力 × 齒輪比 × 垂直傳導 × 摩擦力</h2>
+      <h2>🏎️ 指定任務立體圖解：【40T 藍色齒輪彈力車 ＆ 12 根紅棒目標區】</h2>
+      <div class="iso-showcase">
+        <div class="iso-left">
+          <div>
+            <h3>
+              <span>🔧 滿分彈力車 3D 結構與官方目錄零件</span>
+              <span class="badge badge-warn">單次 18分 × 3次 = 54分</span>
+            </h3>
+            <ul>
+              <li><b>官方目錄必備零件（品號／品名）</b>：<code>7346-W10-C1B</code> *C-40T齒輪-藍 ×1、<code>7331-W11-N1R</code> *A-30mm圓棒-紅 ×12、<code>7407-W10-A1D</code> *C-OD60x25mm橡膠輪胎-黑 ×4（配 <code>7407-W10-B1S</code> 輪框）、<code>3569-W10-D1S1</code> *C-20T傘齒 ×2、<code>R10-05</code> *C-100mm橡皮筋-白 ×2、<code>7900-W10-H1SK</code> *C-捲線器-灰 ×1。</li>
+              <li><b>車頭水平外伸 40T 藍齒輪（`7346-W10-C1B`）</b>：平貼安裝於車頭最前緣中央，讓正投影判定提早 5cm 跨入最高加分區！</li>
+              <li><b>20T 傘齒 90° 垂直傳導（《垂直傳導篇》）</b>：將傳動齒輪組改為前後直向排列，再透過 <code>3569-W10-D1S1</code> <b>20T傘齒轉 90 度驅動後輪軸</b>，使車寬縮減至 <b>11cm</b>（紅棒通道寬 22cm，兩側各留 5.5cm 安全邊距，絕不擦撞紅棒！）。</li>
+              <li><b>捲線器定距鎖死煞車機構</b>：雙股 <code>R10-05</code> 100mm橡皮筋拉動、配合 <code>7900-W10-H1SK</code> 捲線器纏繞 <b>108cm 定距細繩</b>；到達目標區第 6 虛線區時細繩拉盡反扣鎖死後輪，分毫不差停在滿分區！</li>
+            </ul>
+          </div>
+          <div class="iso-real-row">
+            <img class="zoomable" src="images/ref_p2_vertical.jpg" alt="扇形齒輪垂直傳導">
+            <div class="real-caption">
+              <b style="color:var(--warn);">📺 播放清單實拍對照（《垂直傳導》＆《彈力》）</b><br>
+              揚揚老師解答篇第 1、3 題核心：用「傘齒／扇形齒輪」做 90° 垂直傳導，車體就能做得又窄又直！
+            </div>
+          </div>
+        </div>
+
+        <div class="iso-right task-gold">
+          <div class="iso-badge-top" style="border-color:var(--warn); color:var(--warn);">★ 指定任務（54分）：40T 彈力車與目標區 3D 立體＋零件圖鑑</div>
+          <img class="iso-main-img zoomable" src="images/iso_stage9_elastic_car.png" alt="指定任務40T彈力車與紅棒目標區3D立體機關與零件圖鑑">
+          <div class="iso-zoom-hint">🔍 點擊圖片可全螢幕放大檢視 3D 結構與零件品號</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 19: 彈力車滿分調校表 ==================== -->
+    <section>
+      <h2>⚙️ 彈力車四大科學原理整合 ＆ 橡皮筋圈數校準表</h2>
       <div class="stage-grid-3">
         <div class="stage-card">
-          <h3><span>① 扇形齒輪「垂直傳導」縮車寬</span><span class="badge badge-cyan">垂直傳導篇</span></h3>
+          <h3><span>① 垂直傳導縮減車寬</span><span class="badge badge-cyan">車寬 ≤ 11cm</span></h3>
           <ul>
-            <li><b>為什麼一般車會撞紅棒？</b>因為馬達/齒輪橫裝時車體太寬！</li>
-            <li><b>揚揚老師解答篇第 1、3 題神技</b>：利用<b>扇形齒輪（冠狀齒輪）垂直傳導</b>，將齒輪組改為直向排列，再轉 90° 傳遞給後輪軸！</li>
-            <li>車寬直接縮減至 <b>11cm 內</b>，在目標區兩排紅棒間（寬約 22cm）擁有超大容錯空間！</li>
+            <li>一般橫置齒輪車寬達 18cm，極易擦撞目標區紅棒痛失 3 分。</li>
+            <li>改用 <code>3569-W10-D1S1</code> <b>20T傘齒垂直傳導</b>後，車身僅寬 11cm，直線穿越 H·G·F 天橋隧道與紅棒陣列毫無壓力！</li>
           </ul>
-          <img class="ref-img" src="images/ref_p2_vertical.jpg" alt="扇形齒輪垂直傳導">
+          <img class="ref-img zoomable" src="images/ref_p2_gear_ratio.jpg" alt="齒輪比傳動">
         </div>
 
         <div class="stage-card">
-          <h3><span>② 齒輪比調速 ＋ 定距繩長煞車</span><span class="badge badge-orange">齒輪比＆彈力篇</span></h3>
+          <h3><span>② 齒輪比調速防打滑</span><span class="badge badge-orange">摩擦力＆齒輪比</span></h3>
           <ul>
-            <li><b>防暴衝打滑（《摩擦力》＆《齒輪比》）</b>：四輪皆裝<b>寬版高摩擦橡膠胎</b>；後輪軸以 <b>60T 大齒輪帶動 20T 小齒輪</b>延伸行程。</li>
-            <li><b>定距自動煞停秘訣</b>：不直接把橡皮筋勾在車輪軸！而是<b>橡皮筋拉動棉線纏繞後軸</b>，棉線長度精確設為 <code>108cm</code> 行駛圈數——線放完瞬間後軸自動鎖死煞停！</li>
+            <li>四輪使用 <code>7407-W10-A1D</code> 寬版高摩擦橡膠胎，並在車頭底部加裝配重防止起步翹頭。</li>
+            <li>以 <code>7026-W10-W5Y</code> <b>60T 黃齒輪帶動 20T 紅齒輪（1:3 增速延距）</b>，讓橡皮筋轉 2 圈即可帶動車輪轉 6 圈跑完 108cm！</li>
           </ul>
-          <img class="ref-img" src="images/ref_p1_elastic.jpg" alt="彈力車橡皮筋結構">
+          <img class="ref-img zoomable" src="images/ref_p1_elastic.jpg" alt="彈力車底盤">
         </div>
 
         <div class="stage-card">
-          <h3><span>③ 40T 藍齒輪車頭外伸安裝法</span><span class="badge badge-green">正投影得分最大化</span></h3>
+          <h3><span>③ 40T 藍齒輪加分定位</span><span class="badge badge-green">正投影 +3 分</span></h3>
           <ul>
-            <li>規則以「<b>40T 藍齒輪的正投影位置</b>」判定區域得分與加分（0.5～3分）！</li>
-            <li><b>高分組裝法</b>：將 40T 藍齒輪<b>水平安裝在車頭最前端中央</b>（但注意不可超出左邊界！）。</li>
-            <li>當前輪剛抵達目標區後段時，車頭的 40T 齒輪正投影已經輕鬆跨入 <b>+2.5 ～ +3 分黃金區間</b>！</li>
+            <li>車體靜止後，<code>7346-W10-C1B</code> 40T 齒輪完全進入目標區得 8 分，並依 6 對紅棒虛線格<b>擇優判斷加分（+0.5 ～ +3 分）</b>。</li>
+            <li>注意：絕對不可壓到目標區左邊界或上下邊界，否則倒扣變 <code>8-1=7分</code> 或 <code>6分</code>！</li>
           </ul>
-          <img class="ref-img" src="images/ref_wgm_score_bonus.jpg" alt="40T齒輪加分區">
+          <img class="ref-img zoomable" src="images/ref_wgm_score_bonus.jpg" alt="40T齒輪加分區">
         </div>
       </div>
 
       <table class="clean-table" style="margin-top:8px;">
         <thead>
           <tr>
-            <th>校準項目</th>
-            <th>橡皮筋配置建議</th>
-            <th>纏繞圈數（60T 傳動輪基準）</th>
+            <th>校準模式</th>
+            <th>橡皮筋配置建議（目錄品號）</th>
+            <th>後輪纏繞圈數（60T:20T 基準）</th>
             <th>預估行駛距離（預備區起算）</th>
             <th>40T 齒輪停駐目標與單次得分</th>
           </tr>
@@ -910,14 +1138,14 @@
         <tbody>
           <tr>
             <td><b>保守穩健檔（第 1 次保底）</b></td>
-            <td>雙股 16 號新橡皮筋並聯</td>
+            <td>雙股 <code>R10-05</code> 100mm橡皮筋-白 並聯</td>
             <td><b>5.5 圈</b>（定距棉線 102cm）</td>
             <td>約 102 ～ 105 cm</td>
             <td>目標區第 4～5 虛線區（8 + 2.0~2.5 + 7 = <b>17.0～17.5 分</b>）</td>
           </tr>
           <tr>
             <td><b>滿分衝刺檔（第 2、3 次）</b></td>
-            <td>雙股 16 號新橡皮筋並聯（每次換新防疲乏）</td>
+            <td>雙股 <code>R10-05</code> 100mm橡皮筋-白（每次換新防疲乏）</td>
             <td><b>6.0 圈</b>（定距棉線 108cm）</td>
             <td>約 107 ～ 110 cm（距左界留 4cm 裕度）</td>
             <td>目標區最深第 6 虛線區（8 + 3.0 + 7 = <b>18.0 分滿分！</b>）</td>
@@ -926,15 +1154,108 @@
       </table>
     </section>
 
-    <!-- ==================== SLIDE 16: 滑桿視覺化演示 [VIZ] ==================== -->
+    <!-- ==================== SLIDE 20: 全作品智高官方零件備料總表（依積木列表.txt） ==================== -->
+    <section>
+      <h2>📦 全作品智高官方零件備料總表（依中正國小積木目錄）</h2>
+      <p style="font-size:0.36em; color:#cbd5e1; margin:-6px 0 8px 0;">
+        依據《2026年智高零件目錄訂購單（台中市梧棲區中正國小）》精確對照——賽前按此表清點各關零件即可快速組裝：
+      </p>
+      <table class="clean-table" style="font-size:0.33em;">
+        <thead>
+          <tr>
+            <th style="width:62px; text-align:center;">零件圖鑑</th>
+            <th>官方品號</th>
+            <th>官方品名</th>
+            <th>系列</th>
+            <th>本作品應用關卡與結構功能</th>
+            <th style="text-align:center;">建議備料</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7125-W10-B1S.jpg" alt="7125-W10-B1S" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7125-W10-B1S</code></td>
+            <td><b>*C-20×30大底盤-灰</b></td>
+            <td>C系列</td>
+            <td>全場 2×5 拼接（150×40cm）比賽基準底盤（搭配 <code>7125-W10-C1S</code> 大底盤結合器）</td>
+            <td style="text-align:center;"><b>10 片</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7413-W10-Z1W.png" alt="7413-W10-Z1W" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7413-W10-Z1W</code></td>
+            <td><b>*C-15孔超長條-白</b></td>
+            <td>C系列</td>
+            <td>第2關單擺雙柱塔、第4關30cm垂直升降H塔、第6關雙平行軌道、第7關向心力中心單柱</td>
+            <td style="text-align:center;"><b>20 支</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7413-W10-I1W.png" alt="7413-W10-I1W" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7413-W10-I1W</code> / <code>J1W</code></td>
+            <td><b>*C-5×10 / 5×15孔長方框-白</b></td>
+            <td>C系列</td>
+            <td>第1關末段雙倍重骨牌、第3關天橋隧道立柱、第5關飛球接球漏斗籃</td>
+            <td style="text-align:center;"><b>12 個</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7413-W10-K2W.png" alt="7413-W10-K2W" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7413-W10-K2W</code> / <code>Q2W</code></td>
+            <td><b>*C-5孔長條II / 3孔長條II-白</b></td>
+            <td>C系列</td>
+            <td>第1關L型骨牌組、第3關剪刀連桿、第5關18°跳台斜撐、第6關軌道柱、第8關解鎖卡榫</td>
+            <td style="text-align:center;"><b>35 支</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7346-W10-C1B.png" alt="7346-W10-C1B" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7346-W10-C1B</code></td>
+            <td><b style="color:var(--accent2);">*C-40T齒輪-藍（指定必備）</b></td>
+            <td>C系列</td>
+            <td><b>【規則硬性指定】</b>水平外露安裝於彈力車最前緣，作為目標區正投影計分判準</td>
+            <td style="text-align:center;"><b>2 顆</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7331-W11-N1R.png" alt="7331-W11-N1R" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7331-W11-N1R</code></td>
+            <td><b style="color:#f87171;">*A-30mm圓棒-紅（指定必備）</b></td>
+            <td>A系列</td>
+            <td><b>【規則硬性指定】</b>自製目標區前後兩排各插 6 支（共 12 支），構成 6 個加分虛線區</td>
+            <td style="text-align:center;"><b>12 支</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7026-W10-W5Y.png" alt="7026-W10-W5Y" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7026-W10-W5Y</code> / <code>D2R</code></td>
+            <td><b>*C-60T齒輪-黃 / 20T齒輪-紅</b></td>
+            <td>C系列</td>
+            <td>第2關雙60T擺錘、第4關20T棘輪、第7關60T迴旋重錘、第8關滑軌滾輪、彈力車1:3增速傳動</td>
+            <td style="text-align:center;"><b>各 6 顆</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7900-W10-H1SK.jpg" alt="7900-W10-H1SK" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7900-W10-H1SK</code> / <code>O1Y</code></td>
+            <td><b>*C-捲線器-灰 / OD53mm滑輪-黃</b></td>
+            <td>C系列</td>
+            <td>第4關垂直拉升 30cm 電梯捲線組、彈力車 108cm 定長物理死鎖煞車軸</td>
+            <td style="text-align:center;"><b>各 3 顆</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img class="zoomable" src="images/parts/7330-W11-M1B.jpg" alt="7330-W11-M1B" style="height:28px; background:#fff; border-radius:4px; padding:2px;"></td>
+            <td><code>7330-W11-M1B</code> / <code>K1Y</code></td>
+            <td><b>*A-40mm圓球-藍 / 6孔直線軌道-黃</b></td>
+            <td>A系列</td>
+            <td>第4關垂直提升球體、第5關俯衝斜坡加速與 28cm 拋物線凌空飛越任務球</td>
+            <td style="text-align:center;"><b>球4顆/軌4組</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== SLIDE 21: 滑桿視覺化演示 [VIZ] ==================== -->
     <section>
       <h2>🔍 視覺化對比：為什麼「不碰導軌＆定距煞車」能多拿 24 分？</h2>
       <p style="font-size:0.36em; color:#cbd5e1; margin:-6px 0 8px 0;">
         👉 <b>拖曳下方滑桿</b>，比較「<b>一般失誤車（擦撞紅棒＋衝過頭壓左界）</b>」與「<b>中正滿分定距車（窄車體零碰撞＋精準停駐 +3 分區）</b>」的三次總分差異：
       </p>
 
-      <div style="position:relative; height:365px; border-radius:14px; overflow:hidden; border:2px solid rgba(79,195,247,0.35); select-none;">
-        <!-- BEFORE: 一般失誤車 -->
+      <div style="position:relative; height:365px; border-radius:14px; overflow:hidden; border:2px solid rgba(79,195,247,0.35);">
         <div id="viz-before" style="position:absolute; inset:0; background:linear-gradient(135deg, #1f1218 0%, #2d161e 100%); padding:18px 24px; box-sizing:border-box; text-align:left; display:grid; grid-template-columns:1.15fr 1fr; gap:18px; align-items:center;">
           <div>
             <div style="display:inline-block; background:#ef4444; color:#fff; font-size:0.36em; font-weight:800; padding:3px 12px; border-radius:20px; margin-bottom:8px;">
@@ -953,7 +1274,6 @@
           </div>
         </div>
 
-        <!-- AFTER: 滿分定距車 -->
         <div id="viz-after" style="position:absolute; inset:0; clip-path:inset(0 50% 0 0); background:linear-gradient(135deg, #0d211d 0%, #102a38 100%); padding:18px 24px; box-sizing:border-box; text-align:left; display:grid; grid-template-columns:1.15fr 1fr; gap:18px; align-items:center;">
           <div>
             <div style="display:inline-block; background:#10b981; color:#0d1117; font-size:0.36em; font-weight:800; padding:3px 12px; border-radius:20px; margin-bottom:8px;">
@@ -972,7 +1292,6 @@
           </div>
         </div>
 
-        <!-- 分隔光線 -->
         <div id="viz-divider" style="position:absolute; top:0; left:50%; width:4px; height:100%;
           background:linear-gradient(to bottom, transparent, var(--accent2), #fff, var(--accent2), transparent);
           box-shadow:0 0 14px var(--accent2); pointer-events:none;"></div>
@@ -985,7 +1304,7 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 17: 規則快問快答投票 [INTERACT:poll] ==================== -->
+    <!-- ==================== SLIDE 21: 規則快問快答投票 [INTERACT:poll] ==================== -->
     <section id="slide-poll">
       <h2 style="font-size:1.05em;">🗳️ 裁判規則快問快答：這台彈力車單次得幾分？</h2>
       <div style="background:rgba(255,255,255,0.05); border-left:4px solid var(--warn); padding:10px 14px; border-radius:8px; font-size:0.38em; text-align:left; margin-bottom:10px; color:#f1f5f9;">
@@ -1008,7 +1327,7 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 18: 封底檢核清單 [BG] ==================== -->
+    <!-- ==================== SLIDE 22: 封底檢核清單 [BG] ==================== -->
     <section data-background-image="images/ending.png"
              data-background-opacity="0.35"
              data-background-size="cover">
@@ -1077,6 +1396,21 @@
     plugins: []
   });
 
+  // === 全螢幕放大檢視燈箱邏輯 ===
+  document.querySelectorAll('.zoomable').forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const lb = document.getElementById('img-lightbox');
+      const target = document.getElementById('img-lightbox-target');
+      const cap = document.getElementById('img-lightbox-caption');
+      if (lb && target) {
+        target.src = this.src;
+        if (cap) cap.textContent = (this.alt || '立體機關組裝圖') + '（點擊任意處關閉）';
+        lb.style.display = 'flex';
+      }
+    });
+  });
+
   // === VIZ 滑桿邏輯 ===
   const vizSlider = document.getElementById('viz-slider');
   if (vizSlider) {
@@ -1111,7 +1445,6 @@
   const COLORS = ['#4fc3f7','#e8643a','#ffb74d','#81c784','#ce93d8','#80deea','#f48fb1'];
   let wcData = [];
 
-  // 預設種子詞彙，讓學生一打開就有參考並可隨時新增/清空
   const DEFAULT_WORDS = [
     '彈力車停在+3分區', '彈力車停在+3分區', '凌空飛越30cm', '凌空飛越30cm',
     '垂直上升30cm', '棘輪配重電梯', '扇形齒輪垂直傳導', '向心力圓周旋轉',
@@ -1188,7 +1521,6 @@
     });
   }
 
-  // 初始化本地文字雲
   renderWordCloudData(getLocalWords());
 
   const inputEl = document.getElementById('wc-input');
@@ -1294,7 +1626,6 @@
     if (e.currentSlide?.id === 'slide-wordcloud') setTimeout(drawWordCloud, 150);
   });
 
-  // === 單選投票邏輯（本機 + 雲端雙支援）===
   const OPTIONS = [
     { id: 'a', label: 'A. 17 分 — 紅棒被碰掉不扣分，所以拿滿 2 + 2 + 3 + 8 + 2 = 17 分' },
     { id: 'b', label: 'B. 14 分 — 雖紅棒不扣分，但違反「除車輪外未觸碰任何物體」，痛失 3 分！' },
