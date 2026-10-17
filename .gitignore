@@ -1,0 +1,6 @@
+# .gitignore for WGM 2027 GM Basic Guide Slides
+.DS_Store
+Thumbs.db
+node_modules/
+*.tmp
+*.log
